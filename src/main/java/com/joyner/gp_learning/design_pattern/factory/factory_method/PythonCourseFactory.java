@@ -1,0 +1,25 @@
+package com.joyner.gp_learning.design_pattern.factory.factory_method;
+
+import com.joyner.gp_learning.design_pattern.factory.ICourse;
+import com.joyner.gp_learning.design_pattern.factory.PythonCourse;
+
+/**
+ * <pre>
+ *
+ * </pre>
+ *
+ * @author 陆清云 luqingyun@foresee.cn
+ * @version 1.00.00
+ *
+ * <pre>
+ * 修改记录
+ * 修改后版本: 修改人： 修改日期: 修改内容:
+ * </pre>
+ */
+public class PythonCourseFactory implements ICourseFactory {
+
+    @Override
+    public ICourse create() {
+        return new PythonCourse();
+    }
+}
