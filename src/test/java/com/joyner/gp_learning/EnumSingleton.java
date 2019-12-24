@@ -1,0 +1,37 @@
+package com.joyner.gp_learning;
+
+/**
+ * <pre>
+ *
+ * </pre>
+ *
+ * @author 陆清云 luqingyun@foresee.cn
+ * @version 1.00.00
+ *
+ * <pre>
+ * 修改记录
+ * 修改后版本: 修改人： 修改日期: 修改内容:
+ * </pre>
+ */
+public enum  EnumSingleton {
+
+    INSTANCE;
+
+    private Object data;
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    public static EnumSingleton getInstance() {
+        return INSTANCE;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getInstance());
+    }
+}
