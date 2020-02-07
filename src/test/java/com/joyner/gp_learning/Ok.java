@@ -19,16 +19,9 @@ import java.util.List;
  */
 public class Ok extends TestAbstract {
 
-    private byte[] _1m = new byte[1024*1024];
-
     public static void main(String[] args) {
-        List<Ok> l = new ArrayList<>();
-        SoftReference softReference = new SoftReference(l);
-
-        while (true) {
-            Ok o = new Ok();
-            l.add(o);
-
-        }
+        int a = 8;
+        a++;
+        System.out.println(a);
     }
 }
