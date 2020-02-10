@@ -23,7 +23,7 @@ public abstract class Payment {
 
     public abstract double queryBalance(String uid);
 
-    public PayState pay(String uid, double amount) {
+    public final PayState pay(String uid, double amount) {
 
         if (queryBalance(uid) < amount) {
             return new PayState("500", "支付失败", "余额不足");
