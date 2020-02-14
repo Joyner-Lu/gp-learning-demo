@@ -7,7 +7,7 @@
  
   <servlet>
     <servlet-name>gpmvc</servlet-name>
-    <servlet-class>com.joyner.gp_learning.mvcframework.core.v2.servlet.GPDispatcherServlet</servlet-class>
+    <servlet-class>com.joyner.gp_learning.mvcframework.core.v3.servlet.GPDispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>application.properties</param-value>
