@@ -32,11 +32,17 @@ public class CGLibMeipo implements MethodInterceptor {
     }
 
     @Override
-    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        before();
-        Object r = methodProxy.invokeSuper(o, objects);
-        after();
-        return r;
+    public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) {
+        try {
+
+            before();
+            Object r = methodProxy.invokeSuper(obj, args);
+            after();
+            return r;
+        }catch (Throwable ex) {
+            throw new RuntimeException(ex);
+        }
+
     }
 
     private void before() {

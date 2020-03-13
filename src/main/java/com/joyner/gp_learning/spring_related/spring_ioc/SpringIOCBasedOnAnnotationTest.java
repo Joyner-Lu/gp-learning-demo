@@ -1,10 +1,7 @@
-package com.joyner.gp_learning.spring_ioc;
+package com.joyner.gp_learning.spring_related.spring_ioc;
 
 import com.joyner.gp_learning.mvcframework.demo.service.impl.DemoService;
-import org.springframework.beans.factory.HierarchicalBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.ResolvableType;
 
 /**
  * <pre>

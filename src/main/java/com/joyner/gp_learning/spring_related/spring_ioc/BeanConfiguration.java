@@ -1,4 +1,4 @@
-package com.joyner.gp_learning.spring_ioc;
+package com.joyner.gp_learning.spring_related.spring_ioc;
 
 import com.joyner.gp_learning.mvcframework.demo.service.impl.DemoService;
 import org.springframework.context.annotation.Bean;

@@ -19,7 +19,7 @@ import net.sf.cglib.core.DebuggingClassWriter;
 public class CGLibProxyTest {
 
     public static void main(String[] args) {
-        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:/gitSpace/gp-learning-demo/target/classes");
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:/classes");
         CGLibMeipo cgLibMeipo = new CGLibMeipo();
         Customer customer = (Customer)cgLibMeipo.getInstance(Customer.class);
         customer.findLove();
