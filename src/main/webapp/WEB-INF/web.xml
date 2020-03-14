@@ -6,17 +6,16 @@
   <display-name>Archetype Created Web Application</display-name>
  
   <servlet>
-    <servlet-name>gpmvc</servlet-name>
-    <servlet-class>com.joyner.gp_learning.mvcframework.core.v3.servlet.GPDispatcherServlet</servlet-class>
+    <servlet-name>springMvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>application.properties</param-value>
+      <param-value>classpath*:spring-mvc.xml</param-value>
     </init-param>
-    <load-on-startup>1</load-on-startup>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>gpmvc</servlet-name>
+    <servlet-name>springMvc</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
 
