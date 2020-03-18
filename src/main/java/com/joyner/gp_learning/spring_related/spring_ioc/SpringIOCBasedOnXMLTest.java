@@ -1,6 +1,6 @@
 package com.joyner.gp_learning.spring_related.spring_ioc;
 
-import com.joyner.gp_learning.spring_related.mvcframework.demo.service.impl.DemoService;
+import com.joyner.gp_learning.spring_related.springmvc_mini.demo.service.impl.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.ResolvableType;
 
@@ -32,15 +32,8 @@ public class SpringIOCBasedOnXMLTest {
 
     public static void main(String[] args) {
 
-
         ClassPathXmlApplicationContext beanFactory = new ClassPathXmlApplicationContext("beans.xml");
         DemoService demoService =  beanFactory.getBean(DemoService.class);
-        System.out.println(demoService.get("joyner"));
-        ResolvableType type = ResolvableType.forClass(DemoService.class);
-        boolean f = beanFactory.isTypeMatch("demoService", type);
-        System.out.println(f);
-
-        System.out.println(beanFactory.getType("demoService"));
 
 
 

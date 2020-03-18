@@ -1,5 +1,7 @@
 package com.joyner.gp_learning;
 
+import lombok.Data;
+
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,13 @@ import java.util.List;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
+@Data
 public class Ok extends TestAbstract {
 
+    private String data;
+
     public static void main(String[] args) {
-        int a = 8;
-        a++;
-        System.out.println(a);
+        new Ok().getData();
     }
+
 }

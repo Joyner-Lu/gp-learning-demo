@@ -4,12 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="demoService" class="com.joyner.gp_learning.spring_related.mvcframework.demo.service.impl.DemoService" lazy-init="true">
+    <bean id="demoService" class="com.joyner.gp_learning.spring_related.springmvc_mini.demo.service.impl.DemoService" lazy-init="true">
         <property name="demoDao" ref="demoDao"></property>
     </bean>
 
 
-    <bean id="demoDao" lazy-init="true" class="com.joyner.gp_learning.spring_related.mvcframework.demo.dao.impl.DemoDao"></bean>
+    <bean id="demoDao" lazy-init="true" class="com.joyner.gp_learning.spring_related.springmvc_mini.demo.dao.impl.DemoDao"></bean>
 
     <bean id="car" class="com.joyner.gp_learning.spring_related.spring_bean_lifecycle.Car"
           init-method="myInit"
