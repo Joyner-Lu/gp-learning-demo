@@ -41,5 +41,8 @@ public abstract class GPAbstractApplicationContext implements GPBeanFactory {
         return gpBeanFactory;
     }
 
-
+    @Override
+    public String[] getBeanDefinitionNames() {
+        return getBeanFactory().getBeanDefinitionNames();
+    }
 }

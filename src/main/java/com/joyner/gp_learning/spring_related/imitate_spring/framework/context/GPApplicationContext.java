@@ -5,6 +5,7 @@ import com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.fact
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.factory.support.GPBeanDefinitionReader;
 
 import java.util.List;
+import java.util.Properties;
 
 /**
  * <pre>
@@ -93,5 +94,9 @@ public class GPApplicationContext extends GPAbstractApplicationContext {
     @Override
     public GPBeanPostProcessor getBeanPostProcessor() {
         return getBeanFactory().getBeanPostProcessor();
+    }
+
+    public Properties getConfig() {
+        return beanDefinitionReader.getConfig();
     }
 }

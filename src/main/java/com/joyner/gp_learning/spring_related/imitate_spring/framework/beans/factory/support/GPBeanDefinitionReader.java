@@ -128,10 +128,15 @@ public class GPBeanDefinitionReader {
 
     private void loadAppConfig() {
         try {
-            InputStream inputStream = this.getClass().getResourceAsStream(this.configLocations[0]);
+            String configLocation = this.configLocations[0].replaceAll("classpath:", "");
+            InputStream inputStream = this.getClass().getResourceAsStream("/" + configLocation);
             appConfig.load(inputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Properties getConfig() {
+        return appConfig;
     }
 }

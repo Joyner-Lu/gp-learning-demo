@@ -217,4 +217,10 @@ public class GPDefaultListableBeanFactory implements GPBeanFactory {
     public GPBeanPostProcessor getBeanPostProcessor() {
         return gpBeanPostProcessor;
     }
+
+    @Override
+    public String[] getBeanDefinitionNames() {
+        String[] strArr = new String[beanDefinitionMap.size()];
+        return beanDefinitionMap.keySet().toArray(strArr);
+    }
 }

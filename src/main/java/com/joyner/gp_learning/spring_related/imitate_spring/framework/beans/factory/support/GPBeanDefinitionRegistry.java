@@ -2,6 +2,8 @@ package com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.fac
 
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.factory.config.GPBeanDefinition;
 
+import java.util.List;
+
 /**
  * <pre>
  *
@@ -20,4 +22,11 @@ public interface GPBeanDefinitionRegistry {
     void registerBeanDefinition(String beanName, GPBeanDefinition beanDefinition);
 
     GPBeanDefinition getBeanDefinition(String beanName);
+
+    /**
+     * Return the names of all beans defined in this registry.
+     * @return the names of all beans defined in this registry,
+     * or an empty array if none defined
+     */
+    String[] getBeanDefinitionNames();
 }

@@ -1,14 +1,12 @@
 package com.joyner.gp_learning.spring_related.imitate_spring.demo.service.impl;
 
+import com.joyner.gp_learning.spring_related.imitate_spring.demo.service.IQueryService;
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.annotation.GPService;
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-import com.joyner.gp_learning.spring_related.imitate_spring.demo.service.IQueryService;
-import com.joyner.gp_learning.spring_related.imitate_spring.framework.annotation.GPService;
-import com.joyner.gp_learning.spring_related.imitate_spring.framework.context.GPAbstractApplicationContext;
-import com.joyner.gp_learning.spring_related.imitate_spring.framework.context.GPApplicationContextAware;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 查询业务
@@ -17,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @GPService
 @Slf4j
-public class QueryService implements IQueryService,GPApplicationContextAware {
+public class QueryService implements IQueryService {
 
 	/**
 	 * 查询
@@ -30,8 +28,4 @@ public class QueryService implements IQueryService,GPApplicationContextAware {
 		return json;
 	}
 
-	@Override
-	public void setApplicationContext(GPAbstractApplicationContext applicationContext) {
-		System.out.println("====");
-	}
 }
