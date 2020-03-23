@@ -20,5 +20,8 @@ public class DemoDao implements IDemoDao {
     @Override
     public void method() {
         System.out.println("DAO method.");
+        if (1 == 1) {
+            //throw new RuntimeException("故意搞的异常");
+        }
     }
 }

@@ -1,6 +1,10 @@
 package com.joyner.gp_learning.spring_related.spring_ioc;
 
+import com.joyner.gp_learning.spring_related.springmvc_mini.demo.service.IDemoService;
 import com.joyner.gp_learning.spring_related.springmvc_mini.demo.service.impl.DemoService;
+import com.joyner.gp_learning.spring_related.stacktrace.core.StackTraceBeanPostProcessor;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.ResolvableType;
 
@@ -19,23 +23,11 @@ import org.springframework.core.ResolvableType;
  */
 public class SpringIOCBasedOnXMLTest {
 
-    private String str = "";
-
-    public SpringIOCBasedOnXMLTest() {
-        test11(this);
-        this.str = "test";
-    }
-
-    public void test11(SpringIOCBasedOnXMLTest springIOCTest) {
-        System.out.println("val:" + springIOCTest.str);
-    }
 
     public static void main(String[] args) {
 
         ClassPathXmlApplicationContext beanFactory = new ClassPathXmlApplicationContext("beans.xml");
-        DemoService demoService =  beanFactory.getBean(DemoService.class);
-
-
-
+        IDemoService demoService =  beanFactory.getBean(IDemoService.class);
+        demoService.get("测试");
     }
 }
