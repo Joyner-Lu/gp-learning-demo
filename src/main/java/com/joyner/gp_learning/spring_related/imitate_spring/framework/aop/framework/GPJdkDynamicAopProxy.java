@@ -44,6 +44,17 @@ public class GPJdkDynamicAopProxy implements GPAopProxy,InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+        String methodName = method.getName();
+        if (methodName.contains("toString")) {
+            System.out.println("=====真的执行了toString方法，而且是断点进来之前执行的");
+
+            //idea的时候会执行toString方法，因此这里需要做处理
+            //参考文章：http://bbs.itheima.com/thread-425254-1-1.html
+            Method toStringMethod = this.advised.getTargetClass().getMethod("toString");
+            return toStringMethod.invoke(this.advised.getTarget());
+        }
+
         // Get the interception chain for this method.
         List<Object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, this.advised.getTargetClass());
         Object retVal = null;
