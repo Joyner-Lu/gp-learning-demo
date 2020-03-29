@@ -1,5 +1,6 @@
 package com.joyner.gp_learning.spring_related.imitate_spring.framework.context;
 
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.aop.framework.GPAopConfig;
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.factory.config.GPBeanDefinition;
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.factory.config.GPBeanPostProcessor;
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.factory.support.GPBeanDefinitionReader;
@@ -24,6 +25,7 @@ public class GPApplicationContext extends GPAbstractApplicationContext {
 
     private String[] configLocations;
     private GPBeanDefinitionReader beanDefinitionReader;
+    private GPAopConfig aopConfig = new GPAopConfig();;
 
     public GPApplicationContext(String... configLocations) {
         this.configLocations = configLocations;
@@ -38,9 +40,22 @@ public class GPApplicationContext extends GPAbstractApplicationContext {
         List<GPBeanDefinition> beanDefinitions = beanDefinitionReader.loadBeanDefinitions();
         //3、注册，把配置信息放到容器里面(伪 IOC 容器)
         doRegisterBeanDefinition(beanDefinitions);
-        //4、把不是延时加载的类，有提前初始化
+        //4、顺便把aop的配置加载进来。TODO 正常情况都是通通放到GPBeanDefinition，但是为了方便我们做简单处理
+        loadAopConfig();
+        //5、把不是延时加载的类，有提前初始化
         doAutowired(beanDefinitions);
 
+
+    }
+
+    private void loadAopConfig() {
+        Properties appConfig = this.getConfig();
+        aopConfig.setAspectAfter(appConfig.getProperty("aspectAfter"));
+        aopConfig.setAspectAfterThrow(appConfig.getProperty("aspectAfterThrow"));
+        aopConfig.setAspectAfterThrowingName(appConfig.getProperty("aspectAfterThrowingName"));
+        aopConfig.setAspectBefore(appConfig.getProperty("aspectBefore"));
+        aopConfig.setAspectClass(appConfig.getProperty("aspectClass"));
+        aopConfig.setPointCut(appConfig.getProperty("pointCut"));
     }
 
     private void doAutowired(List<GPBeanDefinition> beanDefinitions) {
@@ -55,14 +70,14 @@ public class GPApplicationContext extends GPAbstractApplicationContext {
         try {
             for (GPBeanDefinition beanDefinition : beanDefinitions) {
                 registerBeanDefinition(beanDefinition.getBeanName(), beanDefinition);
-                //把类名也注册进去
+                //处理别名
                 //方便getBean(Class clz)处理
-                registerBeanDefinition(beanDefinition.getBeanClassName(), beanDefinition);
+                beanDefinition.addBeanNameAlias(beanDefinition.getBeanClassName());
                 //把起接口的的名称也作为beanName添加进去，方便处理
                 Class clz = Class.forName(beanDefinition.getBeanClassName());
                 Class<?>[] interfaces =  clz.getInterfaces();
                 for (Class<?> anInterface : interfaces) {
-                    registerBeanDefinition(anInterface.getName(), beanDefinition);
+                    beanDefinition.addBeanNameAlias(anInterface.getName());
                 }
             }
         } catch (Exception ex) {
@@ -98,5 +113,9 @@ public class GPApplicationContext extends GPAbstractApplicationContext {
 
     public Properties getConfig() {
         return beanDefinitionReader.getConfig();
+    }
+
+    public GPAopConfig getAopConfig() {
+        return aopConfig;
     }
 }

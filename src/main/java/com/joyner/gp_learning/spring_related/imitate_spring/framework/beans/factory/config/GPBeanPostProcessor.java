@@ -1,6 +1,11 @@
 package com.joyner.gp_learning.spring_related.imitate_spring.framework.beans.factory.config;
 
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.aop.framework.GPAdvisedSupport;
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.aop.framework.GPAopProxy;
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.aop.framework.GPCglibAopProxy;
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.aop.framework.GPJdkDynamicAopProxy;
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.context.GPAbstractApplicationContext;
+import com.joyner.gp_learning.spring_related.imitate_spring.framework.context.GPApplicationContext;
 import com.joyner.gp_learning.spring_related.imitate_spring.framework.context.GPApplicationContextAware;
 import org.springframework.lang.Nullable;
 
@@ -19,9 +24,9 @@ import org.springframework.lang.Nullable;
  */
 public class GPBeanPostProcessor {
 
-    public GPAbstractApplicationContext applicationContext;
+    public GPApplicationContext applicationContext;
 
-    public GPBeanPostProcessor(GPAbstractApplicationContext applicationContext) {
+    public GPBeanPostProcessor(GPApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
@@ -35,6 +40,26 @@ public class GPBeanPostProcessor {
     }
 
     public Object postProcessAfterInitialization(Object bean, String beanName) {
+        //在这里进行代理的处理
+        bean = wrapIfNecessary(bean, beanName);
         return bean;
+    }
+
+    private Object wrapIfNecessary(Object bean, String beanName) {
+        GPAdvisedSupport advised = new GPAdvisedSupport(this.applicationContext.getAopConfig());
+        advised.setTarget(bean);
+        if (advised.pointCutMatch()) {
+            GPAopProxy gpAopProxy = createProxy(advised);
+            bean = gpAopProxy.getProxy();
+        }
+        return bean;
+    }
+
+    private GPAopProxy createProxy(GPAdvisedSupport advised) {
+        Class[] interfaces = advised.getTargetClass().getInterfaces();
+        if (interfaces != null && interfaces.length > 0) {
+            return new GPJdkDynamicAopProxy(advised);
+        }
+        return new GPCglibAopProxy();
     }
 }

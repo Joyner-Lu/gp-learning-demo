@@ -12,6 +12,7 @@ import com.joyner.gp_learning.spring_related.imitate_spring.framework.context.GP
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -43,18 +44,42 @@ public class GPDefaultListableBeanFactory implements GPBeanFactory {
     @Override
     public Object getBean(String beanName) {
 
-        GPBeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
-        //创建bean。这是调用构造方法初始化
-        GPBeanWrapper beanWrapper = createBeanInstance(beanName, beanDefinition);
-        //依赖注入处理
-        populateBean(beanName, beanDefinition, beanWrapper.getWrappedInstance());
-        Object exposedObject = beanWrapper.getWrappedInstance();
-        /**
-         * 对bean做最后的处理，例如给bean生成代理等
-         */
-        exposedObject = initializeBean(beanName, exposedObject, beanDefinition);
+        beanName = resolvedBeanName(beanName);
 
+        GPBeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+        Object exposedObject = singletonObjects.get(beanName);
+        if (exposedObject == null || !beanDefinition.isSingleton()) {
+            //创建bean。这是调用构造方法初始化
+            GPBeanWrapper beanWrapper = createBeanInstance(beanName, beanDefinition);
+            //依赖注入处理
+            populateBean(beanName, beanDefinition, beanWrapper.getWrappedInstance());
+            exposedObject = beanWrapper.getWrappedInstance();
+            /**
+             * 对bean做最后的处理，例如给bean生成代理等
+             */
+            exposedObject = initializeBean(beanName, exposedObject, beanDefinition);
+            beanWrapper.setWrappedInstance(exposedObject);
+            //设置缓存
+
+            singletonObjects.put(beanName, exposedObject);
+            factoryBeanInstanceCache.put(beanName, beanWrapper);
+            //给别名也新增缓存
+            List<String> beanNameAlias = beanDefinition.getBeanNameAlias();
+            for (String alias : beanNameAlias) {
+                singletonObjects.put(alias, exposedObject);
+                factoryBeanInstanceCache.put(alias, beanWrapper);
+            }
+        }
         return exposedObject;
+    }
+
+    private String resolvedBeanName(String beanName) {
+        String actualBeanName = beanName;
+        boolean isBeanNameAlias = GPBeanDefinition.isBeanNameAlias(beanName);
+        if (isBeanNameAlias) {
+            actualBeanName = GPBeanDefinition.getActualBeanName(beanName);
+        }
+        return actualBeanName;
     }
 
     private Object initializeBean(String beanName, Object exposedObject, GPBeanDefinition beanDefinition) {
@@ -66,11 +91,12 @@ public class GPDefaultListableBeanFactory implements GPBeanFactory {
         //调用init方法，暂不实现
         invokeInitMethods(beanName, wrappedBean, beanDefinition);
 
-        wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName); 
+        wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
 
         return wrappedBean;
 
     }
+
     private Object applyBeanPostProcessorsBeforeInitialization(Object wrappedBean, String beanName) {
 
 
@@ -159,8 +185,6 @@ public class GPDefaultListableBeanFactory implements GPBeanFactory {
     }
 
 
-
-
     private GPBeanWrapper createBeanInstance(String beanName, GPBeanDefinition gpBeanDefinition) {
         //1.获取beanName获取GPBeanDefinition
         //2.判断该bean是否是单例的
@@ -168,21 +192,13 @@ public class GPDefaultListableBeanFactory implements GPBeanFactory {
         //   2.2 非单例，则直接创建对象
         //3.最后放入到BeanWrapper里面
         try {
-            Object beanInstance = null;
+            //非单例或者首次获取创建
+            Class beanClz = Class.forName(gpBeanDefinition.getBeanClassName());
+            Object beanInstance = beanInstance = beanClz.newInstance();
             if (gpBeanDefinition.isSingleton()) {
-                //单例冲缓存获取
-                beanInstance = singletonObjects.get(beanName);
-            }
-            if (beanInstance == null) {
-                //非单例或者首次获取创建
-                Class beanClz = Class.forName(gpBeanDefinition.getBeanClassName());
-                beanInstance = beanClz.newInstance();
-                if (gpBeanDefinition.isSingleton()){
-                    singletonObjects.put(beanName, beanInstance);
-                }
+                singletonObjects.put(beanName, beanInstance);
             }
             GPBeanWrapper beanWrapper = new GPBeanWrapper(beanInstance);
-            factoryBeanInstanceCache.put(beanName, beanWrapper);
             return beanWrapper;
         } catch (Exception ex) {
             throw new RuntimeException(ex);

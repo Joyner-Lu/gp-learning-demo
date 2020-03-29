@@ -1,5 +1,7 @@
 package com.joyner.gp_learning.spring_related.imitate_spring.framework.beans;
 
+import lombok.Data;
+
 /**
  * <pre>
  *
@@ -13,6 +15,7 @@ package com.joyner.gp_learning.spring_related.imitate_spring.framework.beans;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
+@Data
 public class GPBeanWrapper {
 
     private Object wrappedInstance;

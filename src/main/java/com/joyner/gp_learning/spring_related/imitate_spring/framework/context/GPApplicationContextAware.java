@@ -1,7 +1,5 @@
 package com.joyner.gp_learning.spring_related.imitate_spring.framework.context;
 
-import org.springframework.context.ApplicationContext;
-
 /**
  * <pre>
  *
@@ -17,5 +15,5 @@ import org.springframework.context.ApplicationContext;
  */
 public interface GPApplicationContextAware {
 
-    void setApplicationContext(GPAbstractApplicationContext applicationContext);
+    void setApplicationContext(GPApplicationContext applicationContext);
 }

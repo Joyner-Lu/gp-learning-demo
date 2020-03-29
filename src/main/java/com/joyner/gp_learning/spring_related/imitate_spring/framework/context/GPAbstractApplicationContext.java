@@ -24,7 +24,7 @@ public abstract class GPAbstractApplicationContext implements GPBeanFactory {
 
     public GPAbstractApplicationContext() {
         gpBeanFactory = new GPDefaultListableBeanFactory();
-        gpBeanFactory.setBeanPostProcessor(new GPBeanPostProcessor(this));
+        gpBeanFactory.setBeanPostProcessor(new GPBeanPostProcessor((GPApplicationContext)this));
     }
 
     @Override

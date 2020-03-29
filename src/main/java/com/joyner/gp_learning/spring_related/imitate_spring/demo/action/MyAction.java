@@ -74,7 +74,7 @@ public class MyAction {
 		Map<String,Object> model = new HashMap<>();
 		model.put("teacher", teacher == null? "default_teacher" : teacher);
 		model.put("data", "this is data");
-		model.put("token", "tokenValue");
+		model.put("token", "tokenVal ue");
 
 		GPModelAndView modelAndView = new GPModelAndView("first");
 		modelAndView.setModel(model);
