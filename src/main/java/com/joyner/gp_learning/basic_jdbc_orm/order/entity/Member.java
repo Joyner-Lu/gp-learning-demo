@@ -1,4 +1,4 @@
-package com.joyner.gp_learning.jdbc.order.entity;
+package com.joyner.gp_learning.basic_jdbc_orm.order.entity;
 
 import lombok.Data;
 

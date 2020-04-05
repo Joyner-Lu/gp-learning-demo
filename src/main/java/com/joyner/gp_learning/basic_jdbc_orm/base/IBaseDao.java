@@ -1,4 +1,4 @@
-package com.joyner.gp_learning.jdbc.base;
+package com.joyner.gp_learning.basic_jdbc_orm.base;
 
 import java.util.List;
 

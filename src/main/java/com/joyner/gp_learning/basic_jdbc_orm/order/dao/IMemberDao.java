@@ -1,6 +1,6 @@
-package com.joyner.gp_learning.jdbc.order.dao;
+package com.joyner.gp_learning.basic_jdbc_orm.order.dao;
 
-import com.joyner.gp_learning.jdbc.order.entity.Member;
+import com.joyner.gp_learning.basic_jdbc_orm.order.entity.Member;
 
 import java.util.List;
 

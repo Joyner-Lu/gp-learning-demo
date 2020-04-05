@@ -1,7 +1,7 @@
-package com.joyner.gp_learning.jdbc.base.impl;
+package com.joyner.gp_learning.basic_jdbc_orm.base.impl;
 
-import com.joyner.gp_learning.jdbc.base.IBaseDao;
-import com.joyner.gp_learning.jdbc.order.entity.Member;
+import com.joyner.gp_learning.basic_jdbc_orm.base.IBaseDao;
+import com.joyner.gp_learning.basic_jdbc_orm.order.entity.Member;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;

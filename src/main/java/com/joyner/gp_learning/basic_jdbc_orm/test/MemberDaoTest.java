@@ -1,8 +1,8 @@
-package com.joyner.gp_learning.jdbc.test;
+package com.joyner.gp_learning.basic_jdbc_orm.test;
 
-import com.joyner.gp_learning.jdbc.order.dao.IMemberDao;
-import com.joyner.gp_learning.jdbc.order.dao.impl.MemberDao;
-import com.joyner.gp_learning.jdbc.order.entity.Member;
+import com.joyner.gp_learning.basic_jdbc_orm.order.dao.IMemberDao;
+import com.joyner.gp_learning.basic_jdbc_orm.order.dao.impl.MemberDao;
+import com.joyner.gp_learning.basic_jdbc_orm.order.entity.Member;
 
 import java.util.Arrays;
 import java.util.List;
