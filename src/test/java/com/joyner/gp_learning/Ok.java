@@ -25,7 +25,8 @@ public class Ok extends TestAbstract {
     private String data;
 
     public static void main(String[] args) {
-        new Ok().getData();
+        byte s = (byte) 162;
+        System.out.println(String.valueOf(s));
     }
 
 }

@@ -1,4 +1,6 @@
-package com.joyner.gp_learning;
+package com.joyner.gp_learning.jvm_related.class_file_parse;
+
+import lombok.Data;
 
 /**
  * <pre>
@@ -13,8 +15,10 @@ package com.joyner.gp_learning;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
-public class Main {
-    public static void main(String[] args) {
+@Data
+public class Demo {
 
-    }
+    private Integer id;
+    private String name;
+
 }

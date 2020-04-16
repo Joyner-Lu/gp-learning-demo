@@ -1,5 +1,7 @@
 package com.joyner.gp_learning.custom_classloader;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 /**
  * <pre>
  *
@@ -13,5 +15,15 @@ package com.joyner.gp_learning.custom_classloader;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
-public interface ITest01 {
+public class ITest01 {
+
+    public T t = new T();
+
+    public static void main(String[] args) {
+        System.out.println();
+    }
+}
+
+class T {
+
 }

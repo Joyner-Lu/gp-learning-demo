@@ -1,5 +1,6 @@
 package com.joyner.gp_learning.basic_jdbc_orm.order.dao;
 
+import com.joyner.gp_learning.basic_jdbc_orm.base.IBaseDao;
 import com.joyner.gp_learning.basic_jdbc_orm.order.entity.Member;
 
 import java.util.List;
@@ -17,8 +18,10 @@ import java.util.List;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
-public interface IMemberDao {
+public interface IMemberDao extends IBaseDao {
 
     public List<Member> queryByName(String name);
+
+    public List<Member> queryAll();
 }
 

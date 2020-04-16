@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="mybatis-configs/jdbc.properties"></properties>
+    <typeAliases>
+        <package name="com.joyner.gp_learning.orm_related.mybatis"></package>
+    </typeAliases>
+    <typeHandlers>
+        <package name="com.joyner.gp_learning.orm_related.mybatis.typehandler"></package>
+    </typeHandlers>
+    <objectFactory type="com.joyner.gp_learning.orm_related.mybatis.factory.GPObjectFactory">
+        <property name="name" value="test my factory"></property>
+    </objectFactory>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="com.joyner.gp_learning.orm_related.mybatis.mapper"></package>
+    </mappers>
+</configuration>

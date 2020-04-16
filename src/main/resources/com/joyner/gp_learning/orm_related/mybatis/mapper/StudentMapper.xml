@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joyner.gp_learning.orm_related.mybatis.mapper.StudentMapper">
+
+
+    <resultMap id="studentResultMap" type="Student">
+        <result column="teacher_id" property="teacherId"></result>
+        <result column="student_document" property="studentDocument" typeHandler="com.joyner.gp_learning.orm_related.mybatis.typehandler.JSONTypeHandler"></result>
+<!--
+        <association property="teacher" column="teacher_id" select="com.joyner.gp_learning.orm_related.mybatis.mapper.TeacherMapper.selectById"></association>
+-->
+    </resultMap>
+
+    <insert id="save" parameterType="Student">
+        insert into t_student values(default , #{name}, #{addr},#{age}, #{teacherId},
+        #{student_document,jdbcType=VARCHAR,typeHandler=com.joyner.gp_learning.orm_related.mybatis.typehandler.JSONTypeHandler});
+    </insert>
+
+    <select id="selectById" resultMap="studentResultMap">
+        select * from t_student t where t.id = #{param1}
+
+    </select>
+
+    <select id="selectByName" resultMap="studentResultMap">
+        select * from t_student t where t.name = #{param1}
+
+    </select>
+
+    <select id="selectByTeacherId" resultMap="studentResultMap">
+        select * from t_student t where t.teacher_id = #{param1}
+    </select>
+
+
+</mapper>

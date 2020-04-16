@@ -27,4 +27,9 @@ public class MemberDao extends BaseDao<Member> implements IMemberDao {
         condition.setName(name);
         return select(condition);
     }
+
+    @Override
+    public List<Member> queryAll() {
+        return select(new Member());
+    }
 }

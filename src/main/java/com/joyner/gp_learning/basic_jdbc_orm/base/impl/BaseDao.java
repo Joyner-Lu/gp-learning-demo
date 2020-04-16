@@ -2,6 +2,7 @@ package com.joyner.gp_learning.basic_jdbc_orm.base.impl;
 
 import com.joyner.gp_learning.basic_jdbc_orm.base.IBaseDao;
 import com.joyner.gp_learning.basic_jdbc_orm.order.entity.Member;
+import com.joyner.gp_learning.spring_related.dynamic_datasource.core.DynamicDataSource;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -9,6 +10,7 @@ import java.sql.*;
 import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Table;
+import javax.sql.DataSource;
 
 /**
  * <pre>
@@ -31,6 +33,16 @@ public class BaseDao<T> implements IBaseDao {
     //条件map,key存储数据库列名称，值存储值
     private Map<String, Object> conditionMapping = new HashMap<>();
     private List<String> allColumn = new ArrayList<>();
+    private DataSource dataSource;
+    private DynamicDataSource dynamicDataSource;
+
+    public void setDynamicDataSource(DynamicDataSource dynamicDataSource) {
+        this.dynamicDataSource = dynamicDataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     public List<T> select(Object condition) {
@@ -43,10 +55,9 @@ public class BaseDao<T> implements IBaseDao {
             
             parseTableName(condition);
             parseFieldNameMapping(condition);
+            connection = getConnection();
             //1.加载驱动类
-            Class.forName("com.mysql.jdbc.Driver");
             //2.建立连接
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gp-vip-spring-db-demo","root", "623582");
             //3.创建语句集
             String sql = "select * from " + tableName;
             sql = appendCondition(sql, condition);
@@ -90,6 +101,25 @@ public class BaseDao<T> implements IBaseDao {
             }
         }
         return result;
+    }
+
+
+
+    private Connection getConnection() throws Exception{
+        Connection connection = null;
+        if (dynamicDataSource != null) {
+            return dynamicDataSource.getConnection();
+        }
+
+        if( dataSource != null) {
+            connection = dataSource.getConnection();
+            return connection;
+        }
+        Class.forName("com.mysql.jdbc.Driver");
+        //2.建立连接
+        connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gp-vip-spring-db-demo","root", "623582");
+        return connection;
+
     }
 
     private void parseFieldNameMapping(Object condition) throws Exception {
@@ -163,11 +193,10 @@ public class BaseDao<T> implements IBaseDao {
 
     }
 
-    public static void main(String[] args) {
-        IBaseDao<Member> baseDao = new BaseDao();
-        Member condition = new Member();
-        condition.setAge(33);
-        List<Member> r = baseDao.select(condition);
-        System.out.println(Arrays.toString(r.toArray()));
+    public static void main(String[] args) throws Exception{
+        //Class.forName("com.mysql.jdbc.Driver");
+        //2.建立连接
+        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gp-vip-spring-db-demo","root", "623582");
+        System.out.println(connection);
     }
 }

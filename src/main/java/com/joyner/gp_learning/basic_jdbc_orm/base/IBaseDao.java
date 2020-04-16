@@ -1,5 +1,8 @@
 package com.joyner.gp_learning.basic_jdbc_orm.base;
 
+import com.joyner.gp_learning.spring_related.dynamic_datasource.core.DynamicDataSource;
+
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -23,4 +26,8 @@ public interface IBaseDao<T> {
      * @return
      */
     public List<T> select(T condition);
+
+    public void setDataSource(DataSource dataSource) ;
+
+    public void setDynamicDataSource(DynamicDataSource dynamicDataSource);
 }

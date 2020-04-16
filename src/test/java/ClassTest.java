@@ -1,5 +1,3 @@
-package com.joyner.gp_learning;
-
 /**
  * <pre>
  *
@@ -13,8 +11,5 @@ package com.joyner.gp_learning;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
-public class Main {
-    public static void main(String[] args) {
-
-    }
+public class ClassTest {
 }
