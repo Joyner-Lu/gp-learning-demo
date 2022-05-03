@@ -5,23 +5,52 @@
 <mapper namespace="com.joyner.gp_learning.orm_related.mybatis.mapper.StudentMapper">
 
 
+    <!--
+    该mapper开启二级缓存
+    flushInterval="120000" ms 自动刷新时间，未配置只有调用的时候才刷新
+    readOnly="false" 默认false安全， 改为true的可以读写时候，对象必须支持序列化
+    -->
+
+    <cache type="org.apache.ibatis.cache.impl.PerpetualCache"
+    size="1024"
+           eviction="LRU"
+           flushInterval="120000"
+           readOnly="false"
+    ></cache>
+
+
     <resultMap id="studentResultMap" type="Student">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
         <result column="teacher_id" property="teacherId"></result>
         <result column="student_document" property="studentDocument" typeHandler="com.joyner.gp_learning.orm_related.mybatis.typehandler.JSONTypeHandler"></result>
-<!--
+        <!--存在N+1的问题-->
         <association property="teacher" column="teacher_id" select="com.joyner.gp_learning.orm_related.mybatis.mapper.TeacherMapper.selectById"></association>
--->
+       <!-- <association property="teacher" column="teacher_id" javaType="com.joyner.gp_learning.orm_related.mybatis.entity.Teacher">
+            <id column="id" property="id"></id>
+            <result column="name" property="name"></result>
+            <result column="age" property="age"></result>
+        </association>-->
+
     </resultMap>
+
+
 
     <insert id="save" parameterType="Student">
         insert into t_student values(default , #{name}, #{addr},#{age}, #{teacherId},
         #{student_document,jdbcType=VARCHAR,typeHandler=com.joyner.gp_learning.orm_related.mybatis.typehandler.JSONTypeHandler});
     </insert>
 
+    <update id="updateNameById" parameterType="Student">
+        update t_student t set t.name = #{name} where t.id = #{id}
+
+    </update>
+
     <select id="selectById" resultMap="studentResultMap">
         select * from t_student t where t.id = #{param1}
 
     </select>
+
 
     <select id="selectByName" resultMap="studentResultMap">
         select * from t_student t where t.name = #{param1}
@@ -31,6 +60,8 @@
     <select id="selectByTeacherId" resultMap="studentResultMap">
         select * from t_student t where t.teacher_id = #{param1}
     </select>
+
+
 
 
 </mapper>

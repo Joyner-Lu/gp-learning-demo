@@ -10,7 +10,7 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor{
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory bf) throws BeansException {
 		BeanDefinition bd = bf.getBeanDefinition("car");
 		bd.getPropertyValues().addPropertyValue("brand", "奇瑞QQ");
-		System.out.println("调用MyBeanFactoryPostProcessor.postProcessBeanFactory()！");
+		System.out.println("调用MyBeanFactoryPostProcessor.postProcessBeanFactory()！设置brand为：奇瑞QQ");
 	}
 
 }

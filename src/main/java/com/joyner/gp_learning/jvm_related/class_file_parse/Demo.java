@@ -1,5 +1,6 @@
 package com.joyner.gp_learning.jvm_related.class_file_parse;
 
+import com.joyner.gp_learning.jvm_related.exception_code.ExceptionTest;
 import lombok.Data;
 
 /**
@@ -20,5 +21,9 @@ public class Demo {
 
     private Integer id;
     private String name;
+
+    public static void main(String[] args) {
+        System.out.println(new ExceptionTest());
+    }
 
 }

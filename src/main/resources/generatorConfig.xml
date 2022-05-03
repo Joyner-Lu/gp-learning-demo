@@ -1,0 +1,29 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+  <context id="simple" targetRuntime="MyBatis3">
+    <!-- type值为自定义的MyCommentGenerator-->
+    <commentGenerator type="mybatis.generator.custom.MyCommentGenerator">
+      <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+      <property name="suppressAllComments" value="false"/>
+      <property name="suppressDate" value="false"/>
+      <!-- 是否添加数据表中字段的注释 true：是 ： false:否 -->
+      <property name="addRemarkComments" value="true"/>
+    </commentGenerator>
+
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://10.0.13.28:3306/xp_thor_project" userId="xpmotors" password="chengzi)!09"/>
+
+
+
+    <javaModelGenerator targetPackage="example.model" targetProject="src/main/java"/>
+
+    <sqlMapGenerator targetPackage="example.mapper" targetProject="src/main/resources"/>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="example.mapper" targetProject="src/main/java"/>
+
+    <table tableName="t_homecharge_order" />
+  </context>
+</generatorConfiguration>

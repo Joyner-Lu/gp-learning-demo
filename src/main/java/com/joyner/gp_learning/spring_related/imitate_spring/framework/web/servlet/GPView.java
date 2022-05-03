@@ -50,7 +50,8 @@ public class GPView {
             String lineText = randomAccessFile.readLine();
             while (lineText != null) {
                 lineText = new String(lineText.getBytes("ISO-8859-1"), "UTF-8");
-                Pattern pattern = Pattern.compile("￥\\{([^\\}]+)\\}");
+                //Pattern pattern = Pattern.compile("￥\\{([^\\}]+)\\}");
+                Pattern pattern = null;
                 Matcher matcher = pattern.matcher(lineText);
                 while (matcher.find()) {
                     String key = matcher.group(1);
@@ -82,7 +83,8 @@ public class GPView {
     }
 
     public static void main(String[] args) {
-        Pattern pattern = Pattern.compile("￥\\{([^\\}]+)\\}");
+        //Pattern pattern = Pattern.compile("￥\\{([^\\}]+)\\}");
+        Pattern pattern = null;
         String result = "";
         Matcher matcher = pattern.matcher("￥{test}fdf}￥{fdfd}");
         while (matcher.find()) {

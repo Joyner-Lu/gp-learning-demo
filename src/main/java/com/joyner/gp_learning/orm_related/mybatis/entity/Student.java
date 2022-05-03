@@ -3,6 +3,8 @@ package com.joyner.gp_learning.orm_related.mybatis.entity;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * <pre>
  *
@@ -17,7 +19,7 @@ import lombok.Data;
  * </pre>
  */
 @Data
-public class Student {
+public class Student implements Serializable {
 
     private int id;
     private String name;

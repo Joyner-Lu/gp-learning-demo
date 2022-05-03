@@ -18,4 +18,9 @@
         select * from t_teacher t where t.id = #{param1}
     </select>
 
+    <select id="findAll" resultType="Teacher">
+        select * from t_teacher t
+    </select>
+
+
 </mapper>

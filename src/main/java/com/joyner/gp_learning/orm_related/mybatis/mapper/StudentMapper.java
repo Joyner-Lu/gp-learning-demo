@@ -2,6 +2,7 @@ package com.joyner.gp_learning.orm_related.mybatis.mapper;
 
 import com.joyner.gp_learning.orm_related.mybatis.entity.Student;
 import com.joyner.gp_learning.orm_related.mybatis.entity.Teacher;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -27,5 +28,15 @@ public interface StudentMapper {
     public List<Student> selectByTeacherId(int teacherId);
 
     public List<Student> selectByName(String name);
+
+    public void updateNameById(Student student);
+
+    /**
+     * mapper.xml 不需要改动
+     * @param name
+     * @param rowBounds
+     * @return
+     */
+    public List<Student> selectByName(String name, RowBounds rowBounds);
 
 }

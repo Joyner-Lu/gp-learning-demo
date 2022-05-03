@@ -32,6 +32,14 @@ public class JSONTypeHandler extends BaseTypeHandler {
     }
 
 
+    /**
+     * 设置数据库的字段
+     * @param ps
+     * @param i
+     * @param parameter
+     * @param jdbcType
+     * @throws SQLException
+     */
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, Object parameter, JdbcType jdbcType) throws SQLException {
         String jsonStr = JSON.toJSONString(parameter);
@@ -39,6 +47,13 @@ public class JSONTypeHandler extends BaseTypeHandler {
     }
 
 
+    /**
+     * 解析
+     * @param rs
+     * @param columnName
+     * @return
+     * @throws SQLException
+     */
     @Override
     public StudentDocument getNullableResult(ResultSet rs, String columnName) throws SQLException {
         String jsonStr = rs.getString(columnName);

@@ -16,5 +16,12 @@
         destroy-method="myDestory"
         p:brand="红旗CA72"/ -->
 
+    <bean id="cycleA" class="com.joyner.gp_learning.spring_related.spring_bean_lifecycle.CycleA">
+        <constructor-arg ref="cycleB"></constructor-arg>
+    </bean>
+    <bean id="cycleB" class="com.joyner.gp_learning.spring_related.spring_bean_lifecycle.CycleB">
+        <property name="cycleA" ref="cycleA"></property>
+    </bean>
 
+    <bean class="org.springframework.context.annotation.ConfigurationClassPostProcessor"></bean>
 </beans>

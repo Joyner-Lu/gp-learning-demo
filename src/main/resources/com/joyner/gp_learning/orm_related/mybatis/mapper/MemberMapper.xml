@@ -4,6 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joyner.gp_learning.orm_related.mybatis.mapper.MemberMapper">
 
+
+    <cache type="org.mybatis.caches.redis.RedisCache"
+            eviction="FIFO"
+            flushInterval="60000"
+    size="512" readOnly="true"></cache>
+
+
     <resultMap id="memberMap" type="Member">
         <result column="id" property="_id"></result>
     </resultMap>

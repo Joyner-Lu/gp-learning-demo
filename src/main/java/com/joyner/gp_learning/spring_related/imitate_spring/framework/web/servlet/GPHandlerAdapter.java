@@ -29,7 +29,7 @@ public class GPHandlerAdapter {
      * type. HandlerAdapters will usually only support one handler type each.
      * <p>A typical implementation:
      * <p>{@code
-     * return (handler instanceof MyHandler);
+     * return (handler instanceof MyInHandler);
      * }
      * @param handler handler object to check
      * @return whether or not this object can use the given handler

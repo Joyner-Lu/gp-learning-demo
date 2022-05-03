@@ -22,7 +22,8 @@ public class GPObjectFactory extends DefaultObjectFactory {
     public <T> T create(Class<T> type) {
         if (type.equals(Student.class)) {
             Student student = (Student) super.create(type);
-            student.setGenerateByFactory("by object factory");
+            student.setGenerateByFactory("by object factory111");
+            student.setName("joynerlu12343");
             return (T)student;
         }
         T result = super.<T>create(type);

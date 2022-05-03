@@ -1,0 +1,4449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.mapper.THomechargeOrderMapper">
+  <resultMap id="BaseResultMap" type="example.model.THomechargeOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="order_service_provider_code" jdbcType="VARCHAR" property="orderServiceProviderCode" />
+    <result column="order_service_provider_name" jdbcType="VARCHAR" property="orderServiceProviderName" />
+    <result column="process_id" jdbcType="VARCHAR" property="processId" />
+    <result column="store" jdbcType="VARCHAR" property="store" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="external_order_no" jdbcType="VARCHAR" property="externalOrderNo" />
+    <result column="activation_time" jdbcType="TIMESTAMP" property="activationTime" />
+    <result column="activation_user_id" jdbcType="VARCHAR" property="activationUserId" />
+    <result column="activation_user_name" jdbcType="VARCHAR" property="activationUserName" />
+    <result column="create_source" jdbcType="TINYINT" property="createSource" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="order_installation_result" jdbcType="VARCHAR" property="orderInstallationResult" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="district_code" jdbcType="VARCHAR" property="districtCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="house_type" jdbcType="TINYINT" property="houseType" />
+    <result column="house_property" jdbcType="TINYINT" property="houseProperty" />
+    <result column="carpot_type" jdbcType="TINYINT" property="carpotType" />
+    <result column="installation_status" jdbcType="TINYINT" property="installationStatus" />
+    <result column="property_management_status" jdbcType="TINYINT" property="propertyManagementStatus" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="car_series_code" jdbcType="VARCHAR" property="carSeriesCode" />
+    <result column="car_series_name" jdbcType="VARCHAR" property="carSeriesName" />
+    <result column="vehicle_type_code" jdbcType="VARCHAR" property="vehicleTypeCode" />
+    <result column="vehicle_type_name" jdbcType="VARCHAR" property="vehicleTypeName" />
+    <result column="vehicle" jdbcType="VARCHAR" property="vehicle" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="ca_emp_name" jdbcType="VARCHAR" property="caEmpName" />
+    <result column="pre_deliver_date" jdbcType="TIMESTAMP" property="preDeliverDate" />
+    <result column="sale_order_state" jdbcType="VARCHAR" property="saleOrderState" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="charging_pole_type" jdbcType="TINYINT" property="chargingPoleType" />
+    <result column="signatory_name" jdbcType="VARCHAR" property="signatoryName" />
+    <result column="signatory_phone" jdbcType="VARCHAR" property="signatoryPhone" />
+    <result column="scene_code" jdbcType="TINYINT" property="sceneCode" />
+    <result column="earnest_money_pay_time" jdbcType="TIMESTAMP" property="earnestMoneyPayTime" />
+    <result column="dlr_type" jdbcType="TINYINT" property="dlrType" />
+    <result column="revenue" jdbcType="VARCHAR" property="revenue" />
+    <result column="purchase_method" jdbcType="TINYINT" property="purchaseMethod" />
+    <result column="commodity" jdbcType="VARCHAR" property="commodity" />
+    <result column="cash" jdbcType="VARCHAR" property="cash" />
+    <result column="integral" jdbcType="VARCHAR" property="integral" />
+    <result column="discount" jdbcType="VARCHAR" property="discount" />
+    <result column="payment_date" jdbcType="TIMESTAMP" property="paymentDate" />
+    <result column="install_finish_time" jdbcType="TIMESTAMP" property="installFinishTime" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="stop_status" jdbcType="TINYINT" property="stopStatus" />
+    <result column="stop_reason" jdbcType="VARCHAR" property="stopReason" />
+    <result column="stop_time" jdbcType="TIMESTAMP" property="stopTime" />
+    <result column="ark_order_code" jdbcType="VARCHAR" property="arkOrderCode" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="service_provider_manager_id" jdbcType="VARCHAR" property="serviceProviderManagerId" />
+    <result column="service_provider_manager_name" jdbcType="VARCHAR" property="serviceProviderManagerName" />
+    <result column="group_leader_id" jdbcType="VARCHAR" property="groupLeaderId" />
+    <result column="group_leader_name" jdbcType="VARCHAR" property="groupLeaderName" />
+    <result column="bstkd" jdbcType="VARCHAR" property="bstkd" />
+    <result column="zbstkd" jdbcType="VARCHAR" property="zbstkd" />
+    <result column="mall_data" jdbcType="VARCHAR" property="mallData" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, area_code, area_name, order_service_provider_code, order_service_provider_name, 
+    process_id, store, order_no, external_order_no, activation_time, activation_user_id, 
+    activation_user_name, create_source, order_status, order_installation_result, customer_name, 
+    customer_phone, uid, gender, province, province_code, city, city_code, district, 
+    district_code, address, house_type, house_property, carpot_type, installation_status, 
+    property_management_status, contact_name, contact_phone, car_series_code, car_series_name, 
+    vehicle_type_code, vehicle_type_name, vehicle, longitude, latitude, ca_emp_name, 
+    pre_deliver_date, sale_order_state, vin, charging_pole_type, signatory_name, signatory_phone, 
+    scene_code, earnest_money_pay_time, dlr_type, revenue, purchase_method, commodity, 
+    cash, integral, discount, payment_date, install_finish_time, cancel_time, stop_status, 
+    stop_reason, stop_time, ark_order_code, org_code, org_name, service_provider_manager_id, 
+    service_provider_manager_name, group_leader_id, group_leader_name, bstkd, zbstkd, 
+    mall_data, is_deleted, create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectByExample" parameterType="example.model.THomechargeOrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.model.THomechargeOrderExample">
+    delete from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order (id, area_code, area_name, 
+      order_service_provider_code, order_service_provider_name, 
+      process_id, store, order_no, 
+      external_order_no, activation_time, activation_user_id, 
+      activation_user_name, create_source, order_status, 
+      order_installation_result, customer_name, 
+      customer_phone, uid, gender, 
+      province, province_code, city, 
+      city_code, district, district_code, 
+      address, house_type, house_property, 
+      carpot_type, installation_status, property_management_status, 
+      contact_name, contact_phone, car_series_code, 
+      car_series_name, vehicle_type_code, vehicle_type_name, 
+      vehicle, longitude, latitude, 
+      ca_emp_name, pre_deliver_date, sale_order_state, 
+      vin, charging_pole_type, signatory_name, 
+      signatory_phone, scene_code, earnest_money_pay_time, 
+      dlr_type, revenue, purchase_method, 
+      commodity, cash, integral, 
+      discount, payment_date, install_finish_time, 
+      cancel_time, stop_status, stop_reason, 
+      stop_time, ark_order_code, org_code, 
+      org_name, service_provider_manager_id, service_provider_manager_name, 
+      group_leader_id, group_leader_name, bstkd, 
+      zbstkd, mall_data, is_deleted, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{id,jdbcType=BIGINT}, #{areaCode,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, 
+      #{orderServiceProviderCode,jdbcType=VARCHAR}, #{orderServiceProviderName,jdbcType=VARCHAR}, 
+      #{processId,jdbcType=VARCHAR}, #{store,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{externalOrderNo,jdbcType=VARCHAR}, #{activationTime,jdbcType=TIMESTAMP}, #{activationUserId,jdbcType=VARCHAR}, 
+      #{activationUserName,jdbcType=VARCHAR}, #{createSource,jdbcType=TINYINT}, #{orderStatus,jdbcType=VARCHAR}, 
+      #{orderInstallationResult,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{customerPhone,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{province,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{cityCode,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{districtCode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{houseType,jdbcType=TINYINT}, #{houseProperty,jdbcType=TINYINT}, 
+      #{carpotType,jdbcType=TINYINT}, #{installationStatus,jdbcType=TINYINT}, #{propertyManagementStatus,jdbcType=TINYINT}, 
+      #{contactName,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{carSeriesCode,jdbcType=VARCHAR}, 
+      #{carSeriesName,jdbcType=VARCHAR}, #{vehicleTypeCode,jdbcType=VARCHAR}, #{vehicleTypeName,jdbcType=VARCHAR}, 
+      #{vehicle,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{caEmpName,jdbcType=VARCHAR}, #{preDeliverDate,jdbcType=TIMESTAMP}, #{saleOrderState,jdbcType=VARCHAR}, 
+      #{vin,jdbcType=VARCHAR}, #{chargingPoleType,jdbcType=TINYINT}, #{signatoryName,jdbcType=VARCHAR}, 
+      #{signatoryPhone,jdbcType=VARCHAR}, #{sceneCode,jdbcType=TINYINT}, #{earnestMoneyPayTime,jdbcType=TIMESTAMP}, 
+      #{dlrType,jdbcType=TINYINT}, #{revenue,jdbcType=VARCHAR}, #{purchaseMethod,jdbcType=TINYINT}, 
+      #{commodity,jdbcType=VARCHAR}, #{cash,jdbcType=VARCHAR}, #{integral,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=VARCHAR}, #{paymentDate,jdbcType=TIMESTAMP}, #{installFinishTime,jdbcType=TIMESTAMP}, 
+      #{cancelTime,jdbcType=TIMESTAMP}, #{stopStatus,jdbcType=TINYINT}, #{stopReason,jdbcType=VARCHAR}, 
+      #{stopTime,jdbcType=TIMESTAMP}, #{arkOrderCode,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{serviceProviderManagerId,jdbcType=VARCHAR}, #{serviceProviderManagerName,jdbcType=VARCHAR}, 
+      #{groupLeaderId,jdbcType=VARCHAR}, #{groupLeaderName,jdbcType=VARCHAR}, #{bstkd,jdbcType=VARCHAR}, 
+      #{zbstkd,jdbcType=VARCHAR}, #{mallData,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="orderServiceProviderCode != null">
+        order_service_provider_code,
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name,
+      </if>
+      <if test="processId != null">
+        process_id,
+      </if>
+      <if test="store != null">
+        store,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="externalOrderNo != null">
+        external_order_no,
+      </if>
+      <if test="activationTime != null">
+        activation_time,
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id,
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name,
+      </if>
+      <if test="createSource != null">
+        create_source,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="provinceCode != null">
+        province_code,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="districtCode != null">
+        district_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="houseProperty != null">
+        house_property,
+      </if>
+      <if test="carpotType != null">
+        carpot_type,
+      </if>
+      <if test="installationStatus != null">
+        installation_status,
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code,
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name,
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code,
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name,
+      </if>
+      <if test="vehicle != null">
+        vehicle,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name,
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date,
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state,
+      </if>
+      <if test="vin != null">
+        vin,
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type,
+      </if>
+      <if test="signatoryName != null">
+        signatory_name,
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone,
+      </if>
+      <if test="sceneCode != null">
+        scene_code,
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time,
+      </if>
+      <if test="dlrType != null">
+        dlr_type,
+      </if>
+      <if test="revenue != null">
+        revenue,
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method,
+      </if>
+      <if test="commodity != null">
+        commodity,
+      </if>
+      <if test="cash != null">
+        cash,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="paymentDate != null">
+        payment_date,
+      </if>
+      <if test="installFinishTime != null">
+        install_finish_time,
+      </if>
+      <if test="cancelTime != null">
+        cancel_time,
+      </if>
+      <if test="stopStatus != null">
+        stop_status,
+      </if>
+      <if test="stopReason != null">
+        stop_reason,
+      </if>
+      <if test="stopTime != null">
+        stop_time,
+      </if>
+      <if test="arkOrderCode != null">
+        ark_order_code,
+      </if>
+      <if test="orgCode != null">
+        org_code,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="serviceProviderManagerId != null">
+        service_provider_manager_id,
+      </if>
+      <if test="serviceProviderManagerName != null">
+        service_provider_manager_name,
+      </if>
+      <if test="groupLeaderId != null">
+        group_leader_id,
+      </if>
+      <if test="groupLeaderName != null">
+        group_leader_name,
+      </if>
+      <if test="bstkd != null">
+        bstkd,
+      </if>
+      <if test="zbstkd != null">
+        zbstkd,
+      </if>
+      <if test="mallData != null">
+        mall_data,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderCode != null">
+        #{orderServiceProviderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="externalOrderNo != null">
+        #{externalOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        #{activationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activationUserId != null">
+        #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null">
+        #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        #{preDeliverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleOrderState != null">
+        #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneCode != null">
+        #{sceneCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        #{earnestMoneyPayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dlrType != null">
+        #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        #{paymentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="installFinishTime != null">
+        #{installFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null">
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopStatus != null">
+        #{stopStatus,jdbcType=TINYINT},
+      </if>
+      <if test="stopReason != null">
+        #{stopReason,jdbcType=VARCHAR},
+      </if>
+      <if test="stopTime != null">
+        #{stopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arkOrderCode != null">
+        #{arkOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceProviderManagerId != null">
+        #{serviceProviderManagerId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceProviderManagerName != null">
+        #{serviceProviderManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupLeaderId != null">
+        #{groupLeaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupLeaderName != null">
+        #{groupLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="bstkd != null">
+        #{bstkd,jdbcType=VARCHAR},
+      </if>
+      <if test="zbstkd != null">
+        #{zbstkd,jdbcType=VARCHAR},
+      </if>
+      <if test="mallData != null">
+        #{mallData,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.model.THomechargeOrderExample" resultType="java.lang.Long">
+    select count(*) from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_homecharge_order
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.areaCode != null">
+        area_code = #{row.areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.areaName != null">
+        area_name = #{row.areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderCode != null">
+        order_service_provider_code = #{row.orderServiceProviderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderName != null">
+        order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.processId != null">
+        process_id = #{row.processId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.store != null">
+        store = #{row.store,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderNo != null">
+        order_no = #{row.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.externalOrderNo != null">
+        external_order_no = #{row.externalOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationTime != null">
+        activation_time = #{row.activationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.activationUserId != null">
+        activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserName != null">
+        activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.createSource != null">
+        create_source = #{row.createSource,jdbcType=TINYINT},
+      </if>
+      <if test="row.orderStatus != null">
+        order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderInstallationResult != null">
+        order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerName != null">
+        customer_name = #{row.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerPhone != null">
+        customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uid != null">
+        uid = #{row.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="row.gender != null">
+        gender = #{row.gender,jdbcType=TINYINT},
+      </if>
+      <if test="row.province != null">
+        province = #{row.province,jdbcType=VARCHAR},
+      </if>
+      <if test="row.provinceCode != null">
+        province_code = #{row.provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cityCode != null">
+        city_code = #{row.cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.district != null">
+        district = #{row.district,jdbcType=VARCHAR},
+      </if>
+      <if test="row.districtCode != null">
+        district_code = #{row.districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.address != null">
+        address = #{row.address,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseType != null">
+        house_type = #{row.houseType,jdbcType=TINYINT},
+      </if>
+      <if test="row.houseProperty != null">
+        house_property = #{row.houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="row.carpotType != null">
+        carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="row.installationStatus != null">
+        installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.propertyManagementStatus != null">
+        property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.contactName != null">
+        contact_name = #{row.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.contactPhone != null">
+        contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesCode != null">
+        car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesName != null">
+        car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeCode != null">
+        vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeName != null">
+        vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicle != null">
+        vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="row.longitude != null">
+        longitude = #{row.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.latitude != null">
+        latitude = #{row.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.caEmpName != null">
+        ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.preDeliverDate != null">
+        pre_deliver_date = #{row.preDeliverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.saleOrderState != null">
+        sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vin != null">
+        vin = #{row.vin,jdbcType=VARCHAR},
+      </if>
+      <if test="row.chargingPoleType != null">
+        charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="row.signatoryName != null">
+        signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.signatoryPhone != null">
+        signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.sceneCode != null">
+        scene_code = #{row.sceneCode,jdbcType=TINYINT},
+      </if>
+      <if test="row.earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.dlrType != null">
+        dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="row.revenue != null">
+        revenue = #{row.revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.purchaseMethod != null">
+        purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="row.commodity != null">
+        commodity = #{row.commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cash != null">
+        cash = #{row.cash,jdbcType=VARCHAR},
+      </if>
+      <if test="row.integral != null">
+        integral = #{row.integral,jdbcType=VARCHAR},
+      </if>
+      <if test="row.discount != null">
+        discount = #{row.discount,jdbcType=VARCHAR},
+      </if>
+      <if test="row.paymentDate != null">
+        payment_date = #{row.paymentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.installFinishTime != null">
+        install_finish_time = #{row.installFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.cancelTime != null">
+        cancel_time = #{row.cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.stopStatus != null">
+        stop_status = #{row.stopStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.stopReason != null">
+        stop_reason = #{row.stopReason,jdbcType=VARCHAR},
+      </if>
+      <if test="row.stopTime != null">
+        stop_time = #{row.stopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.arkOrderCode != null">
+        ark_order_code = #{row.arkOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orgCode != null">
+        org_code = #{row.orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orgName != null">
+        org_name = #{row.orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.serviceProviderManagerId != null">
+        service_provider_manager_id = #{row.serviceProviderManagerId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.serviceProviderManagerName != null">
+        service_provider_manager_name = #{row.serviceProviderManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.groupLeaderId != null">
+        group_leader_id = #{row.groupLeaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.groupLeaderName != null">
+        group_leader_name = #{row.groupLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.bstkd != null">
+        bstkd = #{row.bstkd,jdbcType=VARCHAR},
+      </if>
+      <if test="row.zbstkd != null">
+        zbstkd = #{row.zbstkd,jdbcType=VARCHAR},
+      </if>
+      <if test="row.mallData != null">
+        mall_data = #{row.mallData,jdbcType=VARCHAR},
+      </if>
+      <if test="row.isDeleted != null">
+        is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createBy != null">
+        create_by = #{row.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="row.updateBy != null">
+        update_by = #{row.updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_homecharge_order
+    set id = #{row.id,jdbcType=BIGINT},
+      area_code = #{row.areaCode,jdbcType=VARCHAR},
+      area_name = #{row.areaName,jdbcType=VARCHAR},
+      order_service_provider_code = #{row.orderServiceProviderCode,jdbcType=VARCHAR},
+      order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{row.processId,jdbcType=VARCHAR},
+      store = #{row.store,jdbcType=VARCHAR},
+      order_no = #{row.orderNo,jdbcType=VARCHAR},
+      external_order_no = #{row.externalOrderNo,jdbcType=VARCHAR},
+      activation_time = #{row.activationTime,jdbcType=TIMESTAMP},
+      activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      create_source = #{row.createSource,jdbcType=TINYINT},
+      order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{row.customerName,jdbcType=VARCHAR},
+      customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      uid = #{row.uid,jdbcType=VARCHAR},
+      gender = #{row.gender,jdbcType=TINYINT},
+      province = #{row.province,jdbcType=VARCHAR},
+      province_code = #{row.provinceCode,jdbcType=VARCHAR},
+      city = #{row.city,jdbcType=VARCHAR},
+      city_code = #{row.cityCode,jdbcType=VARCHAR},
+      district = #{row.district,jdbcType=VARCHAR},
+      district_code = #{row.districtCode,jdbcType=VARCHAR},
+      address = #{row.address,jdbcType=VARCHAR},
+      house_type = #{row.houseType,jdbcType=TINYINT},
+      house_property = #{row.houseProperty,jdbcType=TINYINT},
+      carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{row.contactName,jdbcType=VARCHAR},
+      contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      longitude = #{row.longitude,jdbcType=VARCHAR},
+      latitude = #{row.latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{row.preDeliverDate,jdbcType=TIMESTAMP},
+      sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      vin = #{row.vin,jdbcType=VARCHAR},
+      charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      scene_code = #{row.sceneCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=TIMESTAMP},
+      dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      revenue = #{row.revenue,jdbcType=VARCHAR},
+      purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      commodity = #{row.commodity,jdbcType=VARCHAR},
+      cash = #{row.cash,jdbcType=VARCHAR},
+      integral = #{row.integral,jdbcType=VARCHAR},
+      discount = #{row.discount,jdbcType=VARCHAR},
+      payment_date = #{row.paymentDate,jdbcType=TIMESTAMP},
+      install_finish_time = #{row.installFinishTime,jdbcType=TIMESTAMP},
+      cancel_time = #{row.cancelTime,jdbcType=TIMESTAMP},
+      stop_status = #{row.stopStatus,jdbcType=TINYINT},
+      stop_reason = #{row.stopReason,jdbcType=VARCHAR},
+      stop_time = #{row.stopTime,jdbcType=TIMESTAMP},
+      ark_order_code = #{row.arkOrderCode,jdbcType=VARCHAR},
+      org_code = #{row.orgCode,jdbcType=VARCHAR},
+      org_name = #{row.orgName,jdbcType=VARCHAR},
+      service_provider_manager_id = #{row.serviceProviderManagerId,jdbcType=VARCHAR},
+      service_provider_manager_name = #{row.serviceProviderManagerName,jdbcType=VARCHAR},
+      group_leader_id = #{row.groupLeaderId,jdbcType=VARCHAR},
+      group_leader_name = #{row.groupLeaderName,jdbcType=VARCHAR},
+      bstkd = #{row.bstkd,jdbcType=VARCHAR},
+      zbstkd = #{row.zbstkd,jdbcType=VARCHAR},
+      mall_data = #{row.mallData,jdbcType=VARCHAR},
+      is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      create_by = #{row.createBy,jdbcType=VARCHAR},
+      update_by = #{row.updateBy,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    <set>
+      <if test="areaCode != null">
+        area_code = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderCode != null">
+        order_service_provider_code = #{orderServiceProviderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        process_id = #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        store = #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="externalOrderNo != null">
+        external_order_no = #{externalOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        activation_time = #{activationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        create_source = #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null">
+        district_code = #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        house_property = #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        carpot_type = #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        installation_status = #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        vehicle = #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date = #{preDeliverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        vin = #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneCode != null">
+        scene_code = #{sceneCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dlrType != null">
+        dlr_type = #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        revenue = #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        commodity = #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        payment_date = #{paymentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="installFinishTime != null">
+        install_finish_time = #{installFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null">
+        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopStatus != null">
+        stop_status = #{stopStatus,jdbcType=TINYINT},
+      </if>
+      <if test="stopReason != null">
+        stop_reason = #{stopReason,jdbcType=VARCHAR},
+      </if>
+      <if test="stopTime != null">
+        stop_time = #{stopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arkOrderCode != null">
+        ark_order_code = #{arkOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceProviderManagerId != null">
+        service_provider_manager_id = #{serviceProviderManagerId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceProviderManagerName != null">
+        service_provider_manager_name = #{serviceProviderManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupLeaderId != null">
+        group_leader_id = #{groupLeaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupLeaderName != null">
+        group_leader_name = #{groupLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="bstkd != null">
+        bstkd = #{bstkd,jdbcType=VARCHAR},
+      </if>
+      <if test="zbstkd != null">
+        zbstkd = #{zbstkd,jdbcType=VARCHAR},
+      </if>
+      <if test="mallData != null">
+        mall_data = #{mallData,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    set area_code = #{areaCode,jdbcType=VARCHAR},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      order_service_provider_code = #{orderServiceProviderCode,jdbcType=VARCHAR},
+      order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{processId,jdbcType=VARCHAR},
+      store = #{store,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      external_order_no = #{externalOrderNo,jdbcType=VARCHAR},
+      activation_time = #{activationTime,jdbcType=TIMESTAMP},
+      activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      create_source = #{createSource,jdbcType=TINYINT},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      province = #{province,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      district_code = #{districtCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=TINYINT},
+      house_property = #{houseProperty,jdbcType=TINYINT},
+      carpot_type = #{carpotType,jdbcType=TINYINT},
+      installation_status = #{installationStatus,jdbcType=TINYINT},
+      property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{vehicle,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{preDeliverDate,jdbcType=TIMESTAMP},
+      sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      vin = #{vin,jdbcType=VARCHAR},
+      charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      scene_code = #{sceneCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=TIMESTAMP},
+      dlr_type = #{dlrType,jdbcType=TINYINT},
+      revenue = #{revenue,jdbcType=VARCHAR},
+      purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      commodity = #{commodity,jdbcType=VARCHAR},
+      cash = #{cash,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=VARCHAR},
+      payment_date = #{paymentDate,jdbcType=TIMESTAMP},
+      install_finish_time = #{installFinishTime,jdbcType=TIMESTAMP},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      stop_status = #{stopStatus,jdbcType=TINYINT},
+      stop_reason = #{stopReason,jdbcType=VARCHAR},
+      stop_time = #{stopTime,jdbcType=TIMESTAMP},
+      ark_order_code = #{arkOrderCode,jdbcType=VARCHAR},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      service_provider_manager_id = #{serviceProviderManagerId,jdbcType=VARCHAR},
+      service_provider_manager_name = #{serviceProviderManagerName,jdbcType=VARCHAR},
+      group_leader_id = #{groupLeaderId,jdbcType=VARCHAR},
+      group_leader_name = #{groupLeaderName,jdbcType=VARCHAR},
+      bstkd = #{bstkd,jdbcType=VARCHAR},
+      zbstkd = #{zbstkd,jdbcType=VARCHAR},
+      mall_data = #{mallData,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="example.model.THomechargeOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_district_id" jdbcType="VARCHAR" property="orderDistrictId" />
+    <result column="order_district_name" jdbcType="VARCHAR" property="orderDistrictName" />
+    <result column="order_service_provider_id" jdbcType="VARCHAR" property="orderServiceProviderId" />
+    <result column="order_service_provider_name" jdbcType="VARCHAR" property="orderServiceProviderName" />
+    <result column="process_id" jdbcType="VARCHAR" property="processId" />
+    <result column="store" jdbcType="VARCHAR" property="store" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="activation_time" jdbcType="VARCHAR" property="activationTime" />
+    <result column="activation_user_id" jdbcType="VARCHAR" property="activationUserId" />
+    <result column="activation_user_name" jdbcType="VARCHAR" property="activationUserName" />
+    <result column="create_source" jdbcType="TINYINT" property="createSource" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="order_installation_result" jdbcType="VARCHAR" property="orderInstallationResult" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="house_type" jdbcType="TINYINT" property="houseType" />
+    <result column="house_property" jdbcType="TINYINT" property="houseProperty" />
+    <result column="carpot_type" jdbcType="TINYINT" property="carpotType" />
+    <result column="installation_status" jdbcType="TINYINT" property="installationStatus" />
+    <result column="property_management_status" jdbcType="TINYINT" property="propertyManagementStatus" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="car_series_code" jdbcType="VARCHAR" property="carSeriesCode" />
+    <result column="car_series_name" jdbcType="VARCHAR" property="carSeriesName" />
+    <result column="vehicle_type_code" jdbcType="VARCHAR" property="vehicleTypeCode" />
+    <result column="vehicle_type_name" jdbcType="VARCHAR" property="vehicleTypeName" />
+    <result column="vehicle" jdbcType="VARCHAR" property="vehicle" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="ca_emp_name" jdbcType="VARCHAR" property="caEmpName" />
+    <result column="pre_deliver_date" jdbcType="VARCHAR" property="preDeliverDate" />
+    <result column="sale_order_state" jdbcType="VARCHAR" property="saleOrderState" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="charging_pole_type" jdbcType="TINYINT" property="chargingPoleType" />
+    <result column="signatory_name" jdbcType="VARCHAR" property="signatoryName" />
+    <result column="signatory_phone" jdbcType="VARCHAR" property="signatoryPhone" />
+    <result column="sence_code" jdbcType="TINYINT" property="senceCode" />
+    <result column="earnest_money_pay_time" jdbcType="VARCHAR" property="earnestMoneyPayTime" />
+    <result column="dlr_type" jdbcType="TINYINT" property="dlrType" />
+    <result column="revenue" jdbcType="VARCHAR" property="revenue" />
+    <result column="purchase_method" jdbcType="TINYINT" property="purchaseMethod" />
+    <result column="commodity" jdbcType="VARCHAR" property="commodity" />
+    <result column="cash" jdbcType="VARCHAR" property="cash" />
+    <result column="integral" jdbcType="VARCHAR" property="integral" />
+    <result column="discount" jdbcType="VARCHAR" property="discount" />
+    <result column="payment_date" jdbcType="VARCHAR" property="paymentDate" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_district_id, order_district_name, order_service_provider_id, order_service_provider_name, 
+    process_id, store, order_no, activation_time, activation_user_id, activation_user_name, 
+    create_source, order_status, order_installation_result, customer_name, customer_phone, 
+    gender, province, city, district, address, house_type, house_property, carpot_type, 
+    installation_status, property_management_status, contact_name, contact_phone, car_series_code, 
+    car_series_name, vehicle_type_code, vehicle_type_name, vehicle, longitude, latitude, 
+    ca_emp_name, pre_deliver_date, sale_order_state, vin, charging_pole_type, signatory_name, 
+    signatory_phone, sence_code, earnest_money_pay_time, dlr_type, revenue, purchase_method, 
+    commodity, cash, integral, discount, payment_date, is_deleted, create_time, update_time, 
+    create_by, update_by
+  </sql>
+  <select id="selectByExample" parameterType="example.model.THomechargeOrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.model.THomechargeOrderExample">
+    delete from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order (id, order_district_id, order_district_name, 
+      order_service_provider_id, order_service_provider_name, 
+      process_id, store, order_no, 
+      activation_time, activation_user_id, activation_user_name, 
+      create_source, order_status, order_installation_result, 
+      customer_name, customer_phone, gender, 
+      province, city, district, 
+      address, house_type, house_property, 
+      carpot_type, installation_status, property_management_status, 
+      contact_name, contact_phone, car_series_code, 
+      car_series_name, vehicle_type_code, vehicle_type_name, 
+      vehicle, longitude, latitude, 
+      ca_emp_name, pre_deliver_date, sale_order_state, 
+      vin, charging_pole_type, signatory_name, 
+      signatory_phone, sence_code, earnest_money_pay_time, 
+      dlr_type, revenue, purchase_method, 
+      commodity, cash, integral, 
+      discount, payment_date, is_deleted, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{id,jdbcType=BIGINT}, #{orderDistrictId,jdbcType=VARCHAR}, #{orderDistrictName,jdbcType=VARCHAR}, 
+      #{orderServiceProviderId,jdbcType=VARCHAR}, #{orderServiceProviderName,jdbcType=VARCHAR}, 
+      #{processId,jdbcType=VARCHAR}, #{store,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{activationTime,jdbcType=VARCHAR}, #{activationUserId,jdbcType=VARCHAR}, #{activationUserName,jdbcType=VARCHAR}, 
+      #{createSource,jdbcType=TINYINT}, #{orderStatus,jdbcType=VARCHAR}, #{orderInstallationResult,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerPhone,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{houseType,jdbcType=TINYINT}, #{houseProperty,jdbcType=TINYINT}, 
+      #{carpotType,jdbcType=TINYINT}, #{installationStatus,jdbcType=TINYINT}, #{propertyManagementStatus,jdbcType=TINYINT}, 
+      #{contactName,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{carSeriesCode,jdbcType=VARCHAR}, 
+      #{carSeriesName,jdbcType=VARCHAR}, #{vehicleTypeCode,jdbcType=VARCHAR}, #{vehicleTypeName,jdbcType=VARCHAR}, 
+      #{vehicle,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{caEmpName,jdbcType=VARCHAR}, #{preDeliverDate,jdbcType=VARCHAR}, #{saleOrderState,jdbcType=VARCHAR}, 
+      #{vin,jdbcType=VARCHAR}, #{chargingPoleType,jdbcType=TINYINT}, #{signatoryName,jdbcType=VARCHAR}, 
+      #{signatoryPhone,jdbcType=VARCHAR}, #{senceCode,jdbcType=TINYINT}, #{earnestMoneyPayTime,jdbcType=VARCHAR}, 
+      #{dlrType,jdbcType=TINYINT}, #{revenue,jdbcType=VARCHAR}, #{purchaseMethod,jdbcType=TINYINT}, 
+      #{commodity,jdbcType=VARCHAR}, #{cash,jdbcType=VARCHAR}, #{integral,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=VARCHAR}, #{paymentDate,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderDistrictId != null">
+        order_district_id,
+      </if>
+      <if test="orderDistrictName != null">
+        order_district_name,
+      </if>
+      <if test="orderServiceProviderId != null">
+        order_service_provider_id,
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name,
+      </if>
+      <if test="processId != null">
+        process_id,
+      </if>
+      <if test="store != null">
+        store,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="activationTime != null">
+        activation_time,
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id,
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name,
+      </if>
+      <if test="createSource != null">
+        create_source,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="houseProperty != null">
+        house_property,
+      </if>
+      <if test="carpotType != null">
+        carpot_type,
+      </if>
+      <if test="installationStatus != null">
+        installation_status,
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code,
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name,
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code,
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name,
+      </if>
+      <if test="vehicle != null">
+        vehicle,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name,
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date,
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state,
+      </if>
+      <if test="vin != null">
+        vin,
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type,
+      </if>
+      <if test="signatoryName != null">
+        signatory_name,
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone,
+      </if>
+      <if test="senceCode != null">
+        sence_code,
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time,
+      </if>
+      <if test="dlrType != null">
+        dlr_type,
+      </if>
+      <if test="revenue != null">
+        revenue,
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method,
+      </if>
+      <if test="commodity != null">
+        commodity,
+      </if>
+      <if test="cash != null">
+        cash,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="paymentDate != null">
+        payment_date,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderDistrictId != null">
+        #{orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDistrictName != null">
+        #{orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderId != null">
+        #{orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        #{activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserId != null">
+        #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        #{preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="saleOrderState != null">
+        #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="senceCode != null">
+        #{senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrType != null">
+        #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        #{paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.model.THomechargeOrderExample" resultType="java.lang.Long">
+    select count(*) from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_homecharge_order
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.orderDistrictId != null">
+        order_district_id = #{row.orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderDistrictName != null">
+        order_district_name = #{row.orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderId != null">
+        order_service_provider_id = #{row.orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderName != null">
+        order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.processId != null">
+        process_id = #{row.processId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.store != null">
+        store = #{row.store,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderNo != null">
+        order_no = #{row.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationTime != null">
+        activation_time = #{row.activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserId != null">
+        activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserName != null">
+        activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.createSource != null">
+        create_source = #{row.createSource,jdbcType=TINYINT},
+      </if>
+      <if test="row.orderStatus != null">
+        order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderInstallationResult != null">
+        order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerName != null">
+        customer_name = #{row.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerPhone != null">
+        customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.gender != null">
+        gender = #{row.gender,jdbcType=TINYINT},
+      </if>
+      <if test="row.province != null">
+        province = #{row.province,jdbcType=VARCHAR},
+      </if>
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
+      </if>
+      <if test="row.district != null">
+        district = #{row.district,jdbcType=VARCHAR},
+      </if>
+      <if test="row.address != null">
+        address = #{row.address,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseType != null">
+        house_type = #{row.houseType,jdbcType=TINYINT},
+      </if>
+      <if test="row.houseProperty != null">
+        house_property = #{row.houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="row.carpotType != null">
+        carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="row.installationStatus != null">
+        installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.propertyManagementStatus != null">
+        property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.contactName != null">
+        contact_name = #{row.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.contactPhone != null">
+        contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesCode != null">
+        car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesName != null">
+        car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeCode != null">
+        vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeName != null">
+        vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicle != null">
+        vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="row.longitude != null">
+        longitude = #{row.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.latitude != null">
+        latitude = #{row.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.caEmpName != null">
+        ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.preDeliverDate != null">
+        pre_deliver_date = #{row.preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.saleOrderState != null">
+        sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vin != null">
+        vin = #{row.vin,jdbcType=VARCHAR},
+      </if>
+      <if test="row.chargingPoleType != null">
+        charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="row.signatoryName != null">
+        signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.signatoryPhone != null">
+        signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.senceCode != null">
+        sence_code = #{row.senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="row.earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dlrType != null">
+        dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="row.revenue != null">
+        revenue = #{row.revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.purchaseMethod != null">
+        purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="row.commodity != null">
+        commodity = #{row.commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cash != null">
+        cash = #{row.cash,jdbcType=VARCHAR},
+      </if>
+      <if test="row.integral != null">
+        integral = #{row.integral,jdbcType=VARCHAR},
+      </if>
+      <if test="row.discount != null">
+        discount = #{row.discount,jdbcType=VARCHAR},
+      </if>
+      <if test="row.paymentDate != null">
+        payment_date = #{row.paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.isDeleted != null">
+        is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createBy != null">
+        create_by = #{row.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="row.updateBy != null">
+        update_by = #{row.updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_homecharge_order
+    set id = #{row.id,jdbcType=BIGINT},
+      order_district_id = #{row.orderDistrictId,jdbcType=VARCHAR},
+      order_district_name = #{row.orderDistrictName,jdbcType=VARCHAR},
+      order_service_provider_id = #{row.orderServiceProviderId,jdbcType=VARCHAR},
+      order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{row.processId,jdbcType=VARCHAR},
+      store = #{row.store,jdbcType=VARCHAR},
+      order_no = #{row.orderNo,jdbcType=VARCHAR},
+      activation_time = #{row.activationTime,jdbcType=VARCHAR},
+      activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      create_source = #{row.createSource,jdbcType=TINYINT},
+      order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{row.customerName,jdbcType=VARCHAR},
+      customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      gender = #{row.gender,jdbcType=TINYINT},
+      province = #{row.province,jdbcType=VARCHAR},
+      city = #{row.city,jdbcType=VARCHAR},
+      district = #{row.district,jdbcType=VARCHAR},
+      address = #{row.address,jdbcType=VARCHAR},
+      house_type = #{row.houseType,jdbcType=TINYINT},
+      house_property = #{row.houseProperty,jdbcType=TINYINT},
+      carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{row.contactName,jdbcType=VARCHAR},
+      contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      longitude = #{row.longitude,jdbcType=VARCHAR},
+      latitude = #{row.latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{row.preDeliverDate,jdbcType=VARCHAR},
+      sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      vin = #{row.vin,jdbcType=VARCHAR},
+      charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      sence_code = #{row.senceCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=VARCHAR},
+      dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      revenue = #{row.revenue,jdbcType=VARCHAR},
+      purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      commodity = #{row.commodity,jdbcType=VARCHAR},
+      cash = #{row.cash,jdbcType=VARCHAR},
+      integral = #{row.integral,jdbcType=VARCHAR},
+      discount = #{row.discount,jdbcType=VARCHAR},
+      payment_date = #{row.paymentDate,jdbcType=VARCHAR},
+      is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      create_by = #{row.createBy,jdbcType=VARCHAR},
+      update_by = #{row.updateBy,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    <set>
+      <if test="orderDistrictId != null">
+        order_district_id = #{orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDistrictName != null">
+        order_district_name = #{orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderId != null">
+        order_service_provider_id = #{orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        process_id = #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        store = #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        activation_time = #{activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        create_source = #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        house_property = #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        carpot_type = #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        installation_status = #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        vehicle = #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date = #{preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        vin = #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="senceCode != null">
+        sence_code = #{senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrType != null">
+        dlr_type = #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        revenue = #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        commodity = #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        payment_date = #{paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    set order_district_id = #{orderDistrictId,jdbcType=VARCHAR},
+      order_district_name = #{orderDistrictName,jdbcType=VARCHAR},
+      order_service_provider_id = #{orderServiceProviderId,jdbcType=VARCHAR},
+      order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{processId,jdbcType=VARCHAR},
+      store = #{store,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      activation_time = #{activationTime,jdbcType=VARCHAR},
+      activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      create_source = #{createSource,jdbcType=TINYINT},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=TINYINT},
+      house_property = #{houseProperty,jdbcType=TINYINT},
+      carpot_type = #{carpotType,jdbcType=TINYINT},
+      installation_status = #{installationStatus,jdbcType=TINYINT},
+      property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{vehicle,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{preDeliverDate,jdbcType=VARCHAR},
+      sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      vin = #{vin,jdbcType=VARCHAR},
+      charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      sence_code = #{senceCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      dlr_type = #{dlrType,jdbcType=TINYINT},
+      revenue = #{revenue,jdbcType=VARCHAR},
+      purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      commodity = #{commodity,jdbcType=VARCHAR},
+      cash = #{cash,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=VARCHAR},
+      payment_date = #{paymentDate,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="example.model.THomechargeOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_district_id" jdbcType="VARCHAR" property="orderDistrictId" />
+    <result column="order_district_name" jdbcType="VARCHAR" property="orderDistrictName" />
+    <result column="order_service_provider_id" jdbcType="VARCHAR" property="orderServiceProviderId" />
+    <result column="order_service_provider_name" jdbcType="VARCHAR" property="orderServiceProviderName" />
+    <result column="process_id" jdbcType="VARCHAR" property="processId" />
+    <result column="store" jdbcType="VARCHAR" property="store" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="activation_time" jdbcType="VARCHAR" property="activationTime" />
+    <result column="activation_user_id" jdbcType="VARCHAR" property="activationUserId" />
+    <result column="activation_user_name" jdbcType="VARCHAR" property="activationUserName" />
+    <result column="create_source" jdbcType="TINYINT" property="createSource" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="order_installation_result" jdbcType="VARCHAR" property="orderInstallationResult" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="house_type" jdbcType="TINYINT" property="houseType" />
+    <result column="house_property" jdbcType="TINYINT" property="houseProperty" />
+    <result column="carpot_type" jdbcType="TINYINT" property="carpotType" />
+    <result column="installation_status" jdbcType="TINYINT" property="installationStatus" />
+    <result column="property_management_status" jdbcType="TINYINT" property="propertyManagementStatus" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="car_series_code" jdbcType="VARCHAR" property="carSeriesCode" />
+    <result column="car_series_name" jdbcType="VARCHAR" property="carSeriesName" />
+    <result column="vehicle_type_code" jdbcType="VARCHAR" property="vehicleTypeCode" />
+    <result column="vehicle_type_name" jdbcType="VARCHAR" property="vehicleTypeName" />
+    <result column="vehicle" jdbcType="VARCHAR" property="vehicle" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="ca_emp_name" jdbcType="VARCHAR" property="caEmpName" />
+    <result column="pre_deliver_date" jdbcType="VARCHAR" property="preDeliverDate" />
+    <result column="sale_order_state" jdbcType="VARCHAR" property="saleOrderState" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="charging_pole_type" jdbcType="TINYINT" property="chargingPoleType" />
+    <result column="signatory_name" jdbcType="VARCHAR" property="signatoryName" />
+    <result column="signatory_phone" jdbcType="VARCHAR" property="signatoryPhone" />
+    <result column="sence_code" jdbcType="TINYINT" property="senceCode" />
+    <result column="earnest_money_pay_time" jdbcType="VARCHAR" property="earnestMoneyPayTime" />
+    <result column="dlr_type" jdbcType="TINYINT" property="dlrType" />
+    <result column="revenue" jdbcType="VARCHAR" property="revenue" />
+    <result column="purchase_method" jdbcType="TINYINT" property="purchaseMethod" />
+    <result column="commodity" jdbcType="VARCHAR" property="commodity" />
+    <result column="cash" jdbcType="VARCHAR" property="cash" />
+    <result column="integral" jdbcType="VARCHAR" property="integral" />
+    <result column="discount" jdbcType="VARCHAR" property="discount" />
+    <result column="payment_date" jdbcType="VARCHAR" property="paymentDate" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_district_id, order_district_name, order_service_provider_id, order_service_provider_name, 
+    process_id, store, order_no, activation_time, activation_user_id, activation_user_name, 
+    create_source, order_status, order_installation_result, customer_name, customer_phone, 
+    gender, province, city, district, address, house_type, house_property, carpot_type, 
+    installation_status, property_management_status, contact_name, contact_phone, car_series_code, 
+    car_series_name, vehicle_type_code, vehicle_type_name, vehicle, longitude, latitude, 
+    ca_emp_name, pre_deliver_date, sale_order_state, vin, charging_pole_type, signatory_name, 
+    signatory_phone, sence_code, earnest_money_pay_time, dlr_type, revenue, purchase_method, 
+    commodity, cash, integral, discount, payment_date, is_deleted, create_time, update_time, 
+    create_by, update_by
+  </sql>
+  <select id="selectByExample" parameterType="example.model.THomechargeOrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.model.THomechargeOrderExample">
+    delete from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order (id, order_district_id, order_district_name, 
+      order_service_provider_id, order_service_provider_name, 
+      process_id, store, order_no, 
+      activation_time, activation_user_id, activation_user_name, 
+      create_source, order_status, order_installation_result, 
+      customer_name, customer_phone, gender, 
+      province, city, district, 
+      address, house_type, house_property, 
+      carpot_type, installation_status, property_management_status, 
+      contact_name, contact_phone, car_series_code, 
+      car_series_name, vehicle_type_code, vehicle_type_name, 
+      vehicle, longitude, latitude, 
+      ca_emp_name, pre_deliver_date, sale_order_state, 
+      vin, charging_pole_type, signatory_name, 
+      signatory_phone, sence_code, earnest_money_pay_time, 
+      dlr_type, revenue, purchase_method, 
+      commodity, cash, integral, 
+      discount, payment_date, is_deleted, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{id,jdbcType=BIGINT}, #{orderDistrictId,jdbcType=VARCHAR}, #{orderDistrictName,jdbcType=VARCHAR}, 
+      #{orderServiceProviderId,jdbcType=VARCHAR}, #{orderServiceProviderName,jdbcType=VARCHAR}, 
+      #{processId,jdbcType=VARCHAR}, #{store,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{activationTime,jdbcType=VARCHAR}, #{activationUserId,jdbcType=VARCHAR}, #{activationUserName,jdbcType=VARCHAR}, 
+      #{createSource,jdbcType=TINYINT}, #{orderStatus,jdbcType=VARCHAR}, #{orderInstallationResult,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerPhone,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{houseType,jdbcType=TINYINT}, #{houseProperty,jdbcType=TINYINT}, 
+      #{carpotType,jdbcType=TINYINT}, #{installationStatus,jdbcType=TINYINT}, #{propertyManagementStatus,jdbcType=TINYINT}, 
+      #{contactName,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{carSeriesCode,jdbcType=VARCHAR}, 
+      #{carSeriesName,jdbcType=VARCHAR}, #{vehicleTypeCode,jdbcType=VARCHAR}, #{vehicleTypeName,jdbcType=VARCHAR}, 
+      #{vehicle,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{caEmpName,jdbcType=VARCHAR}, #{preDeliverDate,jdbcType=VARCHAR}, #{saleOrderState,jdbcType=VARCHAR}, 
+      #{vin,jdbcType=VARCHAR}, #{chargingPoleType,jdbcType=TINYINT}, #{signatoryName,jdbcType=VARCHAR}, 
+      #{signatoryPhone,jdbcType=VARCHAR}, #{senceCode,jdbcType=TINYINT}, #{earnestMoneyPayTime,jdbcType=VARCHAR}, 
+      #{dlrType,jdbcType=TINYINT}, #{revenue,jdbcType=VARCHAR}, #{purchaseMethod,jdbcType=TINYINT}, 
+      #{commodity,jdbcType=VARCHAR}, #{cash,jdbcType=VARCHAR}, #{integral,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=VARCHAR}, #{paymentDate,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderDistrictId != null">
+        order_district_id,
+      </if>
+      <if test="orderDistrictName != null">
+        order_district_name,
+      </if>
+      <if test="orderServiceProviderId != null">
+        order_service_provider_id,
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name,
+      </if>
+      <if test="processId != null">
+        process_id,
+      </if>
+      <if test="store != null">
+        store,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="activationTime != null">
+        activation_time,
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id,
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name,
+      </if>
+      <if test="createSource != null">
+        create_source,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="houseProperty != null">
+        house_property,
+      </if>
+      <if test="carpotType != null">
+        carpot_type,
+      </if>
+      <if test="installationStatus != null">
+        installation_status,
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code,
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name,
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code,
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name,
+      </if>
+      <if test="vehicle != null">
+        vehicle,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name,
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date,
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state,
+      </if>
+      <if test="vin != null">
+        vin,
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type,
+      </if>
+      <if test="signatoryName != null">
+        signatory_name,
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone,
+      </if>
+      <if test="senceCode != null">
+        sence_code,
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time,
+      </if>
+      <if test="dlrType != null">
+        dlr_type,
+      </if>
+      <if test="revenue != null">
+        revenue,
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method,
+      </if>
+      <if test="commodity != null">
+        commodity,
+      </if>
+      <if test="cash != null">
+        cash,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="paymentDate != null">
+        payment_date,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderDistrictId != null">
+        #{orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDistrictName != null">
+        #{orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderId != null">
+        #{orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        #{activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserId != null">
+        #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        #{preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="saleOrderState != null">
+        #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="senceCode != null">
+        #{senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrType != null">
+        #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        #{paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.model.THomechargeOrderExample" resultType="java.lang.Long">
+    select count(*) from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_homecharge_order
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.orderDistrictId != null">
+        order_district_id = #{row.orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderDistrictName != null">
+        order_district_name = #{row.orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderId != null">
+        order_service_provider_id = #{row.orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderName != null">
+        order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.processId != null">
+        process_id = #{row.processId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.store != null">
+        store = #{row.store,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderNo != null">
+        order_no = #{row.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationTime != null">
+        activation_time = #{row.activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserId != null">
+        activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserName != null">
+        activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.createSource != null">
+        create_source = #{row.createSource,jdbcType=TINYINT},
+      </if>
+      <if test="row.orderStatus != null">
+        order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderInstallationResult != null">
+        order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerName != null">
+        customer_name = #{row.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerPhone != null">
+        customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.gender != null">
+        gender = #{row.gender,jdbcType=TINYINT},
+      </if>
+      <if test="row.province != null">
+        province = #{row.province,jdbcType=VARCHAR},
+      </if>
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
+      </if>
+      <if test="row.district != null">
+        district = #{row.district,jdbcType=VARCHAR},
+      </if>
+      <if test="row.address != null">
+        address = #{row.address,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseType != null">
+        house_type = #{row.houseType,jdbcType=TINYINT},
+      </if>
+      <if test="row.houseProperty != null">
+        house_property = #{row.houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="row.carpotType != null">
+        carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="row.installationStatus != null">
+        installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.propertyManagementStatus != null">
+        property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.contactName != null">
+        contact_name = #{row.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.contactPhone != null">
+        contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesCode != null">
+        car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesName != null">
+        car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeCode != null">
+        vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeName != null">
+        vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicle != null">
+        vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="row.longitude != null">
+        longitude = #{row.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.latitude != null">
+        latitude = #{row.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.caEmpName != null">
+        ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.preDeliverDate != null">
+        pre_deliver_date = #{row.preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.saleOrderState != null">
+        sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vin != null">
+        vin = #{row.vin,jdbcType=VARCHAR},
+      </if>
+      <if test="row.chargingPoleType != null">
+        charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="row.signatoryName != null">
+        signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.signatoryPhone != null">
+        signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.senceCode != null">
+        sence_code = #{row.senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="row.earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dlrType != null">
+        dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="row.revenue != null">
+        revenue = #{row.revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.purchaseMethod != null">
+        purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="row.commodity != null">
+        commodity = #{row.commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cash != null">
+        cash = #{row.cash,jdbcType=VARCHAR},
+      </if>
+      <if test="row.integral != null">
+        integral = #{row.integral,jdbcType=VARCHAR},
+      </if>
+      <if test="row.discount != null">
+        discount = #{row.discount,jdbcType=VARCHAR},
+      </if>
+      <if test="row.paymentDate != null">
+        payment_date = #{row.paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.isDeleted != null">
+        is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createBy != null">
+        create_by = #{row.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="row.updateBy != null">
+        update_by = #{row.updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_homecharge_order
+    set id = #{row.id,jdbcType=BIGINT},
+      order_district_id = #{row.orderDistrictId,jdbcType=VARCHAR},
+      order_district_name = #{row.orderDistrictName,jdbcType=VARCHAR},
+      order_service_provider_id = #{row.orderServiceProviderId,jdbcType=VARCHAR},
+      order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{row.processId,jdbcType=VARCHAR},
+      store = #{row.store,jdbcType=VARCHAR},
+      order_no = #{row.orderNo,jdbcType=VARCHAR},
+      activation_time = #{row.activationTime,jdbcType=VARCHAR},
+      activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      create_source = #{row.createSource,jdbcType=TINYINT},
+      order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{row.customerName,jdbcType=VARCHAR},
+      customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      gender = #{row.gender,jdbcType=TINYINT},
+      province = #{row.province,jdbcType=VARCHAR},
+      city = #{row.city,jdbcType=VARCHAR},
+      district = #{row.district,jdbcType=VARCHAR},
+      address = #{row.address,jdbcType=VARCHAR},
+      house_type = #{row.houseType,jdbcType=TINYINT},
+      house_property = #{row.houseProperty,jdbcType=TINYINT},
+      carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{row.contactName,jdbcType=VARCHAR},
+      contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      longitude = #{row.longitude,jdbcType=VARCHAR},
+      latitude = #{row.latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{row.preDeliverDate,jdbcType=VARCHAR},
+      sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      vin = #{row.vin,jdbcType=VARCHAR},
+      charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      sence_code = #{row.senceCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=VARCHAR},
+      dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      revenue = #{row.revenue,jdbcType=VARCHAR},
+      purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      commodity = #{row.commodity,jdbcType=VARCHAR},
+      cash = #{row.cash,jdbcType=VARCHAR},
+      integral = #{row.integral,jdbcType=VARCHAR},
+      discount = #{row.discount,jdbcType=VARCHAR},
+      payment_date = #{row.paymentDate,jdbcType=VARCHAR},
+      is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      create_by = #{row.createBy,jdbcType=VARCHAR},
+      update_by = #{row.updateBy,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    <set>
+      <if test="orderDistrictId != null">
+        order_district_id = #{orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDistrictName != null">
+        order_district_name = #{orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderId != null">
+        order_service_provider_id = #{orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        process_id = #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        store = #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        activation_time = #{activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        create_source = #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        house_property = #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        carpot_type = #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        installation_status = #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        vehicle = #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date = #{preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        vin = #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="senceCode != null">
+        sence_code = #{senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrType != null">
+        dlr_type = #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        revenue = #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        commodity = #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        payment_date = #{paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    set order_district_id = #{orderDistrictId,jdbcType=VARCHAR},
+      order_district_name = #{orderDistrictName,jdbcType=VARCHAR},
+      order_service_provider_id = #{orderServiceProviderId,jdbcType=VARCHAR},
+      order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{processId,jdbcType=VARCHAR},
+      store = #{store,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      activation_time = #{activationTime,jdbcType=VARCHAR},
+      activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      create_source = #{createSource,jdbcType=TINYINT},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=TINYINT},
+      house_property = #{houseProperty,jdbcType=TINYINT},
+      carpot_type = #{carpotType,jdbcType=TINYINT},
+      installation_status = #{installationStatus,jdbcType=TINYINT},
+      property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{vehicle,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{preDeliverDate,jdbcType=VARCHAR},
+      sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      vin = #{vin,jdbcType=VARCHAR},
+      charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      sence_code = #{senceCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      dlr_type = #{dlrType,jdbcType=TINYINT},
+      revenue = #{revenue,jdbcType=VARCHAR},
+      purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      commodity = #{commodity,jdbcType=VARCHAR},
+      cash = #{cash,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=VARCHAR},
+      payment_date = #{paymentDate,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="example.model.THomechargeOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_district_id" jdbcType="VARCHAR" property="orderDistrictId" />
+    <result column="order_district_name" jdbcType="VARCHAR" property="orderDistrictName" />
+    <result column="order_service_provider_id" jdbcType="VARCHAR" property="orderServiceProviderId" />
+    <result column="order_service_provider_name" jdbcType="VARCHAR" property="orderServiceProviderName" />
+    <result column="process_id" jdbcType="VARCHAR" property="processId" />
+    <result column="store" jdbcType="VARCHAR" property="store" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="activation_time" jdbcType="VARCHAR" property="activationTime" />
+    <result column="activation_user_id" jdbcType="VARCHAR" property="activationUserId" />
+    <result column="activation_user_name" jdbcType="VARCHAR" property="activationUserName" />
+    <result column="create_source" jdbcType="TINYINT" property="createSource" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="order_installation_result" jdbcType="VARCHAR" property="orderInstallationResult" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="house_type" jdbcType="TINYINT" property="houseType" />
+    <result column="house_property" jdbcType="TINYINT" property="houseProperty" />
+    <result column="carpot_type" jdbcType="TINYINT" property="carpotType" />
+    <result column="installation_status" jdbcType="TINYINT" property="installationStatus" />
+    <result column="property_management_status" jdbcType="TINYINT" property="propertyManagementStatus" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="car_series_code" jdbcType="VARCHAR" property="carSeriesCode" />
+    <result column="car_series_name" jdbcType="VARCHAR" property="carSeriesName" />
+    <result column="vehicle_type_code" jdbcType="VARCHAR" property="vehicleTypeCode" />
+    <result column="vehicle_type_name" jdbcType="VARCHAR" property="vehicleTypeName" />
+    <result column="vehicle" jdbcType="VARCHAR" property="vehicle" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="ca_emp_name" jdbcType="VARCHAR" property="caEmpName" />
+    <result column="pre_deliver_date" jdbcType="VARCHAR" property="preDeliverDate" />
+    <result column="sale_order_state" jdbcType="VARCHAR" property="saleOrderState" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="charging_pole_type" jdbcType="TINYINT" property="chargingPoleType" />
+    <result column="signatory_name" jdbcType="VARCHAR" property="signatoryName" />
+    <result column="signatory_phone" jdbcType="VARCHAR" property="signatoryPhone" />
+    <result column="sence_code" jdbcType="TINYINT" property="senceCode" />
+    <result column="earnest_money_pay_time" jdbcType="VARCHAR" property="earnestMoneyPayTime" />
+    <result column="dlr_type" jdbcType="TINYINT" property="dlrType" />
+    <result column="revenue" jdbcType="VARCHAR" property="revenue" />
+    <result column="purchase_method" jdbcType="TINYINT" property="purchaseMethod" />
+    <result column="commodity" jdbcType="VARCHAR" property="commodity" />
+    <result column="cash" jdbcType="VARCHAR" property="cash" />
+    <result column="integral" jdbcType="VARCHAR" property="integral" />
+    <result column="discount" jdbcType="VARCHAR" property="discount" />
+    <result column="payment_date" jdbcType="VARCHAR" property="paymentDate" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_district_id, order_district_name, order_service_provider_id, order_service_provider_name, 
+    process_id, store, order_no, activation_time, activation_user_id, activation_user_name, 
+    create_source, order_status, order_installation_result, customer_name, customer_phone, 
+    gender, province, city, district, address, house_type, house_property, carpot_type, 
+    installation_status, property_management_status, contact_name, contact_phone, car_series_code, 
+    car_series_name, vehicle_type_code, vehicle_type_name, vehicle, longitude, latitude, 
+    ca_emp_name, pre_deliver_date, sale_order_state, vin, charging_pole_type, signatory_name, 
+    signatory_phone, sence_code, earnest_money_pay_time, dlr_type, revenue, purchase_method, 
+    commodity, cash, integral, discount, payment_date, is_deleted, create_time, update_time, 
+    create_by, update_by
+  </sql>
+  <select id="selectByExample" parameterType="example.model.THomechargeOrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_homecharge_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.model.THomechargeOrderExample">
+    delete from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order (id, order_district_id, order_district_name, 
+      order_service_provider_id, order_service_provider_name, 
+      process_id, store, order_no, 
+      activation_time, activation_user_id, activation_user_name, 
+      create_source, order_status, order_installation_result, 
+      customer_name, customer_phone, gender, 
+      province, city, district, 
+      address, house_type, house_property, 
+      carpot_type, installation_status, property_management_status, 
+      contact_name, contact_phone, car_series_code, 
+      car_series_name, vehicle_type_code, vehicle_type_name, 
+      vehicle, longitude, latitude, 
+      ca_emp_name, pre_deliver_date, sale_order_state, 
+      vin, charging_pole_type, signatory_name, 
+      signatory_phone, sence_code, earnest_money_pay_time, 
+      dlr_type, revenue, purchase_method, 
+      commodity, cash, integral, 
+      discount, payment_date, is_deleted, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{id,jdbcType=BIGINT}, #{orderDistrictId,jdbcType=VARCHAR}, #{orderDistrictName,jdbcType=VARCHAR}, 
+      #{orderServiceProviderId,jdbcType=VARCHAR}, #{orderServiceProviderName,jdbcType=VARCHAR}, 
+      #{processId,jdbcType=VARCHAR}, #{store,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{activationTime,jdbcType=VARCHAR}, #{activationUserId,jdbcType=VARCHAR}, #{activationUserName,jdbcType=VARCHAR}, 
+      #{createSource,jdbcType=TINYINT}, #{orderStatus,jdbcType=VARCHAR}, #{orderInstallationResult,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerPhone,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{houseType,jdbcType=TINYINT}, #{houseProperty,jdbcType=TINYINT}, 
+      #{carpotType,jdbcType=TINYINT}, #{installationStatus,jdbcType=TINYINT}, #{propertyManagementStatus,jdbcType=TINYINT}, 
+      #{contactName,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{carSeriesCode,jdbcType=VARCHAR}, 
+      #{carSeriesName,jdbcType=VARCHAR}, #{vehicleTypeCode,jdbcType=VARCHAR}, #{vehicleTypeName,jdbcType=VARCHAR}, 
+      #{vehicle,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{caEmpName,jdbcType=VARCHAR}, #{preDeliverDate,jdbcType=VARCHAR}, #{saleOrderState,jdbcType=VARCHAR}, 
+      #{vin,jdbcType=VARCHAR}, #{chargingPoleType,jdbcType=TINYINT}, #{signatoryName,jdbcType=VARCHAR}, 
+      #{signatoryPhone,jdbcType=VARCHAR}, #{senceCode,jdbcType=TINYINT}, #{earnestMoneyPayTime,jdbcType=VARCHAR}, 
+      #{dlrType,jdbcType=TINYINT}, #{revenue,jdbcType=VARCHAR}, #{purchaseMethod,jdbcType=TINYINT}, 
+      #{commodity,jdbcType=VARCHAR}, #{cash,jdbcType=VARCHAR}, #{integral,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=VARCHAR}, #{paymentDate,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="example.model.THomechargeOrder">
+    insert into t_homecharge_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderDistrictId != null">
+        order_district_id,
+      </if>
+      <if test="orderDistrictName != null">
+        order_district_name,
+      </if>
+      <if test="orderServiceProviderId != null">
+        order_service_provider_id,
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name,
+      </if>
+      <if test="processId != null">
+        process_id,
+      </if>
+      <if test="store != null">
+        store,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="activationTime != null">
+        activation_time,
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id,
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name,
+      </if>
+      <if test="createSource != null">
+        create_source,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="houseProperty != null">
+        house_property,
+      </if>
+      <if test="carpotType != null">
+        carpot_type,
+      </if>
+      <if test="installationStatus != null">
+        installation_status,
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code,
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name,
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code,
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name,
+      </if>
+      <if test="vehicle != null">
+        vehicle,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name,
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date,
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state,
+      </if>
+      <if test="vin != null">
+        vin,
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type,
+      </if>
+      <if test="signatoryName != null">
+        signatory_name,
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone,
+      </if>
+      <if test="senceCode != null">
+        sence_code,
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time,
+      </if>
+      <if test="dlrType != null">
+        dlr_type,
+      </if>
+      <if test="revenue != null">
+        revenue,
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method,
+      </if>
+      <if test="commodity != null">
+        commodity,
+      </if>
+      <if test="cash != null">
+        cash,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="paymentDate != null">
+        payment_date,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderDistrictId != null">
+        #{orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDistrictName != null">
+        #{orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderId != null">
+        #{orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        #{activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserId != null">
+        #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        #{preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="saleOrderState != null">
+        #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="senceCode != null">
+        #{senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrType != null">
+        #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        #{paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.model.THomechargeOrderExample" resultType="java.lang.Long">
+    select count(*) from t_homecharge_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_homecharge_order
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.orderDistrictId != null">
+        order_district_id = #{row.orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderDistrictName != null">
+        order_district_name = #{row.orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderId != null">
+        order_service_provider_id = #{row.orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderServiceProviderName != null">
+        order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.processId != null">
+        process_id = #{row.processId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.store != null">
+        store = #{row.store,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderNo != null">
+        order_no = #{row.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationTime != null">
+        activation_time = #{row.activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserId != null">
+        activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.activationUserName != null">
+        activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.createSource != null">
+        create_source = #{row.createSource,jdbcType=TINYINT},
+      </if>
+      <if test="row.orderStatus != null">
+        order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orderInstallationResult != null">
+        order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerName != null">
+        customer_name = #{row.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerPhone != null">
+        customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.gender != null">
+        gender = #{row.gender,jdbcType=TINYINT},
+      </if>
+      <if test="row.province != null">
+        province = #{row.province,jdbcType=VARCHAR},
+      </if>
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
+      </if>
+      <if test="row.district != null">
+        district = #{row.district,jdbcType=VARCHAR},
+      </if>
+      <if test="row.address != null">
+        address = #{row.address,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseType != null">
+        house_type = #{row.houseType,jdbcType=TINYINT},
+      </if>
+      <if test="row.houseProperty != null">
+        house_property = #{row.houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="row.carpotType != null">
+        carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="row.installationStatus != null">
+        installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.propertyManagementStatus != null">
+        property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.contactName != null">
+        contact_name = #{row.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.contactPhone != null">
+        contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesCode != null">
+        car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.carSeriesName != null">
+        car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeCode != null">
+        vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicleTypeName != null">
+        vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vehicle != null">
+        vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="row.longitude != null">
+        longitude = #{row.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.latitude != null">
+        latitude = #{row.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.caEmpName != null">
+        ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.preDeliverDate != null">
+        pre_deliver_date = #{row.preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.saleOrderState != null">
+        sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="row.vin != null">
+        vin = #{row.vin,jdbcType=VARCHAR},
+      </if>
+      <if test="row.chargingPoleType != null">
+        charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="row.signatoryName != null">
+        signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.signatoryPhone != null">
+        signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.senceCode != null">
+        sence_code = #{row.senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="row.earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dlrType != null">
+        dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="row.revenue != null">
+        revenue = #{row.revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.purchaseMethod != null">
+        purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="row.commodity != null">
+        commodity = #{row.commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cash != null">
+        cash = #{row.cash,jdbcType=VARCHAR},
+      </if>
+      <if test="row.integral != null">
+        integral = #{row.integral,jdbcType=VARCHAR},
+      </if>
+      <if test="row.discount != null">
+        discount = #{row.discount,jdbcType=VARCHAR},
+      </if>
+      <if test="row.paymentDate != null">
+        payment_date = #{row.paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.isDeleted != null">
+        is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createBy != null">
+        create_by = #{row.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="row.updateBy != null">
+        update_by = #{row.updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_homecharge_order
+    set id = #{row.id,jdbcType=BIGINT},
+      order_district_id = #{row.orderDistrictId,jdbcType=VARCHAR},
+      order_district_name = #{row.orderDistrictName,jdbcType=VARCHAR},
+      order_service_provider_id = #{row.orderServiceProviderId,jdbcType=VARCHAR},
+      order_service_provider_name = #{row.orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{row.processId,jdbcType=VARCHAR},
+      store = #{row.store,jdbcType=VARCHAR},
+      order_no = #{row.orderNo,jdbcType=VARCHAR},
+      activation_time = #{row.activationTime,jdbcType=VARCHAR},
+      activation_user_id = #{row.activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{row.activationUserName,jdbcType=VARCHAR},
+      create_source = #{row.createSource,jdbcType=TINYINT},
+      order_status = #{row.orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{row.orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{row.customerName,jdbcType=VARCHAR},
+      customer_phone = #{row.customerPhone,jdbcType=VARCHAR},
+      gender = #{row.gender,jdbcType=TINYINT},
+      province = #{row.province,jdbcType=VARCHAR},
+      city = #{row.city,jdbcType=VARCHAR},
+      district = #{row.district,jdbcType=VARCHAR},
+      address = #{row.address,jdbcType=VARCHAR},
+      house_type = #{row.houseType,jdbcType=TINYINT},
+      house_property = #{row.houseProperty,jdbcType=TINYINT},
+      carpot_type = #{row.carpotType,jdbcType=TINYINT},
+      installation_status = #{row.installationStatus,jdbcType=TINYINT},
+      property_management_status = #{row.propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{row.contactName,jdbcType=VARCHAR},
+      contact_phone = #{row.contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{row.carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{row.carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{row.vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{row.vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{row.vehicle,jdbcType=VARCHAR},
+      longitude = #{row.longitude,jdbcType=VARCHAR},
+      latitude = #{row.latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{row.caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{row.preDeliverDate,jdbcType=VARCHAR},
+      sale_order_state = #{row.saleOrderState,jdbcType=VARCHAR},
+      vin = #{row.vin,jdbcType=VARCHAR},
+      charging_pole_type = #{row.chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{row.signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{row.signatoryPhone,jdbcType=VARCHAR},
+      sence_code = #{row.senceCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{row.earnestMoneyPayTime,jdbcType=VARCHAR},
+      dlr_type = #{row.dlrType,jdbcType=TINYINT},
+      revenue = #{row.revenue,jdbcType=VARCHAR},
+      purchase_method = #{row.purchaseMethod,jdbcType=TINYINT},
+      commodity = #{row.commodity,jdbcType=VARCHAR},
+      cash = #{row.cash,jdbcType=VARCHAR},
+      integral = #{row.integral,jdbcType=VARCHAR},
+      discount = #{row.discount,jdbcType=VARCHAR},
+      payment_date = #{row.paymentDate,jdbcType=VARCHAR},
+      is_deleted = #{row.isDeleted,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      create_by = #{row.createBy,jdbcType=VARCHAR},
+      update_by = #{row.updateBy,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    <set>
+      <if test="orderDistrictId != null">
+        order_district_id = #{orderDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDistrictName != null">
+        order_district_name = #{orderDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderId != null">
+        order_service_provider_id = #{orderServiceProviderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderServiceProviderName != null">
+        order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        process_id = #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        store = #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activationTime != null">
+        activation_time = #{activationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserId != null">
+        activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activationUserName != null">
+        activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createSource != null">
+        create_source = #{createSource,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderInstallationResult != null">
+        order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="houseProperty != null">
+        house_property = #{houseProperty,jdbcType=TINYINT},
+      </if>
+      <if test="carpotType != null">
+        carpot_type = #{carpotType,jdbcType=TINYINT},
+      </if>
+      <if test="installationStatus != null">
+        installation_status = #{installationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="propertyManagementStatus != null">
+        property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesCode != null">
+        car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeriesName != null">
+        car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeCode != null">
+        vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeName != null">
+        vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicle != null">
+        vehicle = #{vehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="caEmpName != null">
+        ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="preDeliverDate != null">
+        pre_deliver_date = #{preDeliverDate,jdbcType=VARCHAR},
+      </if>
+      <if test="saleOrderState != null">
+        sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null">
+        vin = #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingPoleType != null">
+        charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      </if>
+      <if test="signatoryName != null">
+        signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="signatoryPhone != null">
+        signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="senceCode != null">
+        sence_code = #{senceCode,jdbcType=TINYINT},
+      </if>
+      <if test="earnestMoneyPayTime != null">
+        earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrType != null">
+        dlr_type = #{dlrType,jdbcType=TINYINT},
+      </if>
+      <if test="revenue != null">
+        revenue = #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseMethod != null">
+        purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      </if>
+      <if test="commodity != null">
+        commodity = #{commodity,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentDate != null">
+        payment_date = #{paymentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.model.THomechargeOrder">
+    update t_homecharge_order
+    set order_district_id = #{orderDistrictId,jdbcType=VARCHAR},
+      order_district_name = #{orderDistrictName,jdbcType=VARCHAR},
+      order_service_provider_id = #{orderServiceProviderId,jdbcType=VARCHAR},
+      order_service_provider_name = #{orderServiceProviderName,jdbcType=VARCHAR},
+      process_id = #{processId,jdbcType=VARCHAR},
+      store = #{store,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      activation_time = #{activationTime,jdbcType=VARCHAR},
+      activation_user_id = #{activationUserId,jdbcType=VARCHAR},
+      activation_user_name = #{activationUserName,jdbcType=VARCHAR},
+      create_source = #{createSource,jdbcType=TINYINT},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_installation_result = #{orderInstallationResult,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=TINYINT},
+      house_property = #{houseProperty,jdbcType=TINYINT},
+      carpot_type = #{carpotType,jdbcType=TINYINT},
+      installation_status = #{installationStatus,jdbcType=TINYINT},
+      property_management_status = #{propertyManagementStatus,jdbcType=TINYINT},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      car_series_code = #{carSeriesCode,jdbcType=VARCHAR},
+      car_series_name = #{carSeriesName,jdbcType=VARCHAR},
+      vehicle_type_code = #{vehicleTypeCode,jdbcType=VARCHAR},
+      vehicle_type_name = #{vehicleTypeName,jdbcType=VARCHAR},
+      vehicle = #{vehicle,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      ca_emp_name = #{caEmpName,jdbcType=VARCHAR},
+      pre_deliver_date = #{preDeliverDate,jdbcType=VARCHAR},
+      sale_order_state = #{saleOrderState,jdbcType=VARCHAR},
+      vin = #{vin,jdbcType=VARCHAR},
+      charging_pole_type = #{chargingPoleType,jdbcType=TINYINT},
+      signatory_name = #{signatoryName,jdbcType=VARCHAR},
+      signatory_phone = #{signatoryPhone,jdbcType=VARCHAR},
+      sence_code = #{senceCode,jdbcType=TINYINT},
+      earnest_money_pay_time = #{earnestMoneyPayTime,jdbcType=VARCHAR},
+      dlr_type = #{dlrType,jdbcType=TINYINT},
+      revenue = #{revenue,jdbcType=VARCHAR},
+      purchase_method = #{purchaseMethod,jdbcType=TINYINT},
+      commodity = #{commodity,jdbcType=VARCHAR},
+      cash = #{cash,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=VARCHAR},
+      payment_date = #{paymentDate,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

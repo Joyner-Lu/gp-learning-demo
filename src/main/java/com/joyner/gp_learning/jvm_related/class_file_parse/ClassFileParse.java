@@ -43,8 +43,195 @@ public class ClassFileParse {
         InputStream is = new FileInputStream(file);
         //1.读取magic
         readMagic(is);
+        //2.读取version
+        readVersion(is);
+        //3.读取常量池
+        readConstantPool(is);
         is.close();
 
+    }
+
+    private void readConstantPool(InputStream is) throws Exception {
+        //1.读取count
+        byte[] bytes = readBytes(u2, is);
+        int count = ByteUtils.bytesToInt(bytes);
+        System.out.println("constant_pool_count:" + (count - 1));
+        //2.开始读取常量类(注意从1开始)
+        for (int i = 1; i < count; i++) {
+            processConstantPool(is, i);
+        }
+
+    }
+
+    private void processConstantPool(InputStream is, int constantIdx) throws Exception {
+
+
+        byte[] bytes = readBytes(u1, is);
+        int accessFlagVal = ByteUtils.bytesToInt(bytes);
+        ConstantPoolTypes constantPoolTypes = ConstantPoolTypes.getByAccessFlagVal(accessFlagVal);
+        if (constantPoolTypes == null) {
+            System.out.println("=====error==========accessFlagVal:" + accessFlagVal);
+            return;
+        }
+
+        switch (constantPoolTypes) {
+            case CONTANT_Utf8_info:
+                parseContantUtf8Info(is, constantIdx);
+                break;
+            case CONSTANT_Long_info:
+                System.out.println("CONSTANT_Long_info");
+                break;
+            case CONSTANT_Float_info:
+                System.out.println("CONSTANT_Float_info");
+                break;
+            case CONSTANT_Double_info:
+                System.out.println("CONSTANT_Double_info");
+                break;
+            case CONSTANT_String_info:
+                parseConstantStringInfo(is, constantIdx);
+                break;
+            case CONSTANT_Integer_info:
+                System.out.println("CONSTANT_Integer_info");
+                break;
+            case CONSTANT_MethodType_info:
+                System.out.println("CONSTANT_MethodType_info");
+                break;
+            case CONSTANT_NameAndType_info:
+                parseConstantNameandtypeInfo(is, constantIdx);
+
+                break;
+            case CONSTANT_MethodHandle_info:
+                System.out.println("CONSTANT_MethodHandle_info");
+
+                break;
+            case CONSTANT_InvokeDynamic_info:
+                System.out.println("CONSTANT_InvokeDynamic_info");
+
+                break;
+            case CONSTANT_InterfaceMethodref_info:
+                System.out.println("CONSTANT_InterfaceMethodref_info");
+                break;
+            case CONSTANT_Methodref_info:
+                parseConstantMethodrefInfo(is, constantIdx);
+                break;
+            case CONSTANT_Fieldref_info:
+                parseConstantFieldrefInfo(is, constantIdx);
+                break;
+            case CONSTANT_Class_inf:
+                parseConstantClassInf(is, constantIdx);
+                break;
+        }
+    }
+
+    private void parseConstantNameandtypeInfo(InputStream is, int constantIdx) throws Exception {
+        /**
+         * CONSTANT_NameAndType_info {
+         *     u1 tag;
+         *     u2 name_index; //name_index 项的值必须是对常量池的有效索引， 常量池在该索引处的项必须是
+         *     CONSTANT_Utf8_info结构，这个结构要么表示特殊的方法名<init>，要么表示一个有效
+         *     的字段或方法的非限定名（ Unqualified Name）。
+         *     u2 descriptor_index;//descriptor_index 项的值必须是对常量池的有效索引， 常量池在该索引
+         *     处的项必须是CONSTANT_Utf8_info结构。
+         * }
+         */
+        byte[] bytes = readBytes(u2, is);
+        int nameIndex = ByteUtils.bytesToInt(bytes);
+        bytes = readBytes(u2, is);
+        int descriptorIndex = ByteUtils.bytesToInt(bytes);
+        System.out.println("  #" + constantIdx + " = NameAndType  #" + nameIndex + ":#" + descriptorIndex);
+
+
+    }
+
+    private void parseContantUtf8Info(InputStream is, int constantIdx) throws Exception {
+        /**
+         * CONSTANT_Utf8_info {
+         *     u1 tag;
+         *     u2 length;
+         *     u1 bytes[length];
+         * }
+         */
+        byte[] bytes = readBytes(u2, is);
+        int length = ByteUtils.bytesToInt(bytes);
+        bytes = readBytes(u1*length, is);
+        System.out.println("  #" + constantIdx + " = Utf8  " + new String(bytes));
+
+
+    }
+
+    private void parseConstantStringInfo(InputStream is, int constantIdx) throws Exception {
+        /**
+         * CONSTANT_Class_info {
+         *     u1 tag;
+         *     u2 name_index;
+         * }
+         */
+        byte[] bytes = readBytes(u2,is);
+        int nameIndex = ByteUtils.bytesToInt(bytes);
+        System.out.println("  #" + constantIdx + " = String  #" + nameIndex);
+
+    }
+
+
+
+    private void parseConstantClassInf(InputStream is, int constantIdx) throws Exception {
+        /**
+         * CONSTANT_Class_info {
+         *     u1 tag;
+         *     u2 name_index;
+         * }
+         */
+        byte[] bytes = readBytes(u2, is);
+        int nameIndex = ByteUtils.bytesToInt(bytes);
+        System.out.println("  #" + constantIdx + " = Class  #" + nameIndex);
+
+
+
+    }
+
+    private void parseConstantFieldrefInfo(InputStream is, int constantIdx) throws Exception {
+        /**
+         * {
+         *     tag:u1,
+         *     index:u2,
+         *     index:u2
+         *
+         * }
+         */
+        byte[] bytes = readBytes(u2, is);
+        int index1 = ByteUtils.bytesToInt(bytes);
+        bytes = readBytes(u2, is);
+        int index2 = ByteUtils.bytesToInt(bytes);
+        System.out.println("  #" + constantIdx + " = Fieldref  #" + index1 + ".#" + index2);
+
+
+    }
+
+    private void parseConstantMethodrefInfo(InputStream is, int constantIdx) throws Exception {
+        /**
+         * CONSTANT_Methodref_info {
+         *     u1 tag;
+         *     u2 class_index;
+         *     u2 name_and_type_index;
+         * }
+         */
+        byte[] bytes = readBytes(u2, is);
+        int classIndex = ByteUtils.bytesToInt(bytes);
+        bytes = readBytes(u2, is);
+        int nameAndTypeIndex = ByteUtils.bytesToInt(bytes);
+        System.out.println("  #" + constantIdx + " = Methodref  #" + classIndex + ".#" + nameAndTypeIndex);
+
+
+    }
+
+    private void readVersion(InputStream is) throws Exception {
+        byte[] bytes = readBytes(u2, is);
+        int minuVersion = ByteUtils.bytesToInt(bytes);
+        System.out.println("minuVersion:" + minuVersion);
+
+        bytes = readBytes(u2, is);
+        int majorVersion = ByteUtils.bytesToInt(bytes);
+        System.out.println("majorVersion:" + majorVersion);
     }
 
     private void readMagic(InputStream is) throws Exception {
@@ -76,18 +263,20 @@ public class ClassFileParse {
          *
          */
 
-        byte[] buffer = new byte[u4];
-        int len = is.read(buffer);
+        byte[] buffer = readBytes(u4, is);;
         StringBuilder sb = new StringBuilder();
         for (byte b : buffer) {
-            System.out.println(ByteUtils.toBinaryString(b));
             sb.append(ByteUtils.toHexString(b));
         }
-        System.out.println(sb.toString());
+        System.out.println("Magic:" + sb.toString());
     }
 
 
-
+    public static byte[] readBytes(int length,InputStream is) throws Exception {
+        byte[] bytes = new byte[length];
+        is.read(bytes);
+        return bytes;
+    }
 
 
 

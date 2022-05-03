@@ -65,9 +65,9 @@ public class MemberTest {
         StudentMapper studentMapper = session.getMapper(StudentMapper.class);
         List<Student> students = studentMapper.selectByName("jack");
         System.out.println(Arrays.toString(students.toArray()));
-       /* TeacherMapper teacherMapper = session.getMapper(TeacherMapper.class);
+        TeacherMapper teacherMapper = session.getMapper(TeacherMapper.class);
         Teacher teacher = teacherMapper.selectById(1);
-        System.out.println(teacher);*/
+        System.out.println(teacher);
         session.commit();
     }
 

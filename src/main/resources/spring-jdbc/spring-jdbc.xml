@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <context:property-placeholder location="classpath*:db.properties" />
+
+    <!--创建数据源-->
+    <bean id="datasourcePool" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="initialSize" value="${dbPool.initialSize}" />
+        <property name="minIdle" value="${dbPool.minIdle}" />
+        <property name="maxActive" value="${dbPool.maxActive}" />
+        <property name="maxWait" value="${dbPool.maxWait}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${dbPool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${dbPool.minEvictableIdleTimeMillis}" />
+        <property name="validationQuery" value="${dbPool.validationQuery}" />
+        <property name="testWhileIdle" value="${dbPool.testWhileIdle}" />
+        <property name="testOnBorrow" value="${dbPool.testOnBorrow}" />
+        <property name="testOnReturn" value="${dbPool.testOnReturn}" />
+        <property name="poolPreparedStatements" value="${dbPool.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="${dbPool.maxPoolPreparedStatementPerConnectionSize}" />
+        <property name="filters" value="${dbPool.filters}" />
+    </bean>
+
+    <bean id="dataSource" parent="datasourcePool">
+        <property name="driverClassName" value="${db2019.mysql.jdbc.driverClassName}" />
+        <property name="url" value="${db2019.mysql.jdbc.url}" />
+        <property name="username" value="${db2019.mysql.jdbc.username}" />
+        <property name="password" value="${db2019.mysql.jdbc.password}" />
+    </bean>
+
+
+    <bean id="myDao" class="com.joyner.gp_learning.spring_related.spring_jdbc_demo.MyDao">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+
+</beans>

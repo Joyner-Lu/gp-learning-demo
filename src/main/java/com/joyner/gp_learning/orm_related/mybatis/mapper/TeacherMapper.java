@@ -1,6 +1,10 @@
 package com.joyner.gp_learning.orm_related.mybatis.mapper;
 
 import com.joyner.gp_learning.orm_related.mybatis.entity.Teacher;
+import com.sun.rowset.internal.Row;
+import org.apache.ibatis.session.RowBounds;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -21,5 +25,7 @@ public interface TeacherMapper {
     public int save(Teacher teacher);
 
     public Teacher selectById(int id);
+
+    public List<Teacher> findAll(RowBounds rowBounds);
 
 }

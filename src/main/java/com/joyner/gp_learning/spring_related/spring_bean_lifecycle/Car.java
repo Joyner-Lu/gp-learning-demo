@@ -6,9 +6,11 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
-		DisposableBean {
+		DisposableBean, ApplicationContextAware {
 	private String brand;
 	private String color;
 	private int maxSpeed;
@@ -25,7 +27,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 	}
 
 	public void setBrand(String brand) {
-		System.out.println("调用setBrand()设置属性。");
+		System.out.println("调用setBrand()设置属性。brand：" + brand);
 		this.brand = brand;
 	}
 
@@ -84,5 +86,9 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 	public void myDestory() {
 		System.out.println("调用myDestroy()。");
 	}
-	
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		System.out.println("==============fdfsd");
+	}
 }

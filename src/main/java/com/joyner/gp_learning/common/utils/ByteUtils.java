@@ -1,7 +1,5 @@
 package com.joyner.gp_learning.common.utils;
 
-import javax.xml.bind.SchemaOutputResolver;
-
 /**
  * <pre>
  *
@@ -30,6 +28,32 @@ public class ByteUtils {
         return binaryStr;
     }
 
+    /**
+     * big endian字节序
+     * @param bytes
+     * @return
+     */
+    public static int bytesToInt(byte[] bytes) {
+
+        if (bytes.length > 4) {
+            throw new RuntimeException("int的字节数为32位，不能大于4个字节");
+        }
+        int firstMoveLen = (bytes.length - 1) * 8;
+        byte[] tempBytes = new byte[bytes.length];
+        int idx = 0;
+        for (byte aByte : bytes) {
+            tempBytes[idx] = (byte) ((aByte & 0xFF) << firstMoveLen);
+            idx++;
+            firstMoveLen = firstMoveLen - 8;
+        }
+
+        int result = 0;
+        for (byte tempByte : tempBytes) {
+            result = result | tempByte;
+        }
+        return result;
+    }
+
     public static String toHexString(byte b) {
         int convert = b & 0xFF;
         String hexString = Integer.toHexString(convert);
@@ -50,12 +74,18 @@ public class ByteUtils {
         result[3] = (byte) (i & 0x000000FF);//获取第一个字节
         result[2] = (byte) ((i & 0x0000FF00) >> 8);
         result[1] = (byte) ((i & 0x00FF0000) >> 16);
-        result[0] = (byte) ((i & 0xFF000000) >> 24);//最高位
+        result[0] = (byte) ((i & 0xFF000000) >> 24);//最高位d
         return result;
     }
 
+    /**
+     * 获取反码
+     * @param i
+     * @return
+     */
     public static byte[] intToBytesInverseCode(int i) {
         if (i >= 0) {
+            //正数的反码和补码一致
             return intToBytesComplementCode(i);
         }
         //反码就是补码减1
@@ -71,6 +101,7 @@ public class ByteUtils {
      */
     public static byte[] intToBytesOriginalCode(int i) {
         if (i >= 0) {
+            //正数的原码和补码一致
             return intToBytesComplementCode(i);
         }
         //原码就是反码保持符号位不变，其余位数取反

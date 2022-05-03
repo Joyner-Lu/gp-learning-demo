@@ -1,8 +1,9 @@
 package com.joyner.gp_learning.spring_related.spring_aop;
 
-import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -11,7 +12,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
  */
 public class XmlAspect {
 
-	private final static Logger log = Logger.getLogger(XmlAspect.class);
+	private final static Logger log = LoggerFactory.getLogger(XmlAspect.class);
 
 	/*
 	 * 配置前置通知,使用在方法aspect()上注册的切入点
