@@ -1,7 +1,10 @@
 package com.joyner.gp_learning.spring_related.spring_jdbc_demo;
 
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,14 +25,19 @@ import java.sql.SQLException;
 public class MyDao  extends JdbcDaoSupport {
 
     public void queryData() throws Exception {
-        getJdbcTemplate().query("select * from t_teacher", new RowMapper<Object>() {
+        /*getJdbcTemplate().query("select * from t_teacher", new RowMapper<Object>() {
             @Override
             public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
                 String name = rs.getString("name");
                 System.out.println("=======name:" + name);
                 return null;
             }
-        });
+        });*/
+
+        PreparedStatementCreatorFactory factory = new PreparedStatementCreatorFactory("insert into test (name) values('fack')");
+        PreparedStatementCreator creator = factory.newPreparedStatementCreator(new Object[] {});
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        getJdbcTemplate().update(creator, keyHolder);
 
 
     }

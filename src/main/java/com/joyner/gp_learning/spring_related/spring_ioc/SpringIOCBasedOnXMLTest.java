@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.ResolvableType;
 
+import javax.swing.event.ChangeEvent;
+
 /**
  * <pre>
  *
@@ -26,8 +28,11 @@ public class SpringIOCBasedOnXMLTest {
 
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext beanFactory = new ClassPathXmlApplicationContext("beans.xml");
+        ApplicationContext beanFactory = new ClassPathXmlApplicationContext("beans.xml");
         IDemoService demoService =  beanFactory.getBean(IDemoService.class);
         demoService.get("测试");
+
+
+        beanFactory.publishEvent(new ChangeEvent("=========test========="));
     }
 }

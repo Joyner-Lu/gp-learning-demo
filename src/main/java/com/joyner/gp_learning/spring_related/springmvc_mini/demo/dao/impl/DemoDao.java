@@ -24,4 +24,9 @@ public class DemoDao implements IDemoDao {
             //throw new RuntimeException("故意搞的异常");
         }
     }
+
+    public String mytest1() {
+        return "DemoDao-mytest1";
+
+    }
 }

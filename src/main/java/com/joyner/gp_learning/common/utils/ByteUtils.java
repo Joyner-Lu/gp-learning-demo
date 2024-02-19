@@ -1,5 +1,7 @@
 package com.joyner.gp_learning.common.utils;
 
+import org.junit.Test;
+
 /**
  * <pre>
  *
@@ -13,6 +15,7 @@ package com.joyner.gp_learning.common.utils;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
+
 public class ByteUtils {
 
 
@@ -129,9 +132,10 @@ public class ByteUtils {
         return result;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testDemo() {
         //-----------------
-        int i = 8;
+        int i = -58;
         byte[] r = intToBytesComplementCode(i);
         StringBuilder sb = new StringBuilder();
         for (byte b : r) {
@@ -156,6 +160,13 @@ public class ByteUtils {
         }
         System.out.println(i + "的原码：" + sb.toString());
         sb.setLength(0);
+    }
+
+    public static void main(String[] args) {
+        byte b1 = 0x4;
+        System.out.println(b1);
 
     }
+
+
 }
