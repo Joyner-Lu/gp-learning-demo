@@ -1,7 +1,9 @@
 package com.joyner.gp_learning.kafka_client;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
 
@@ -20,20 +22,20 @@ import java.util.Properties;
  */
 public class Producer {
 
-    public static void main(String[] args) {
+    public static Properties initConfig() {
         Properties props = new Properties();
-        props.setProperty("bootstrap.servers", "localhost:9092");
-        props.setProperty("group.id", "test");
-        props.setProperty("enable.auto.commit", "true");
-        props.setProperty("auto.commit.interval.ms", "1000");
-        props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+        props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.setProperty(ProducerConfig.CLIENT_ID_CONFIG, "producer.client.id.demo");
+        return props;
+    }
 
-        ProducerRecord<String, String> record = new ProducerRecord<>("quickstart-events", "value2");
-        producer.send(record);
+    public static void main(String[] args) {
+        Properties props = initConfig();
+        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+        producer.send(new ProducerRecord<>("quickstart-events", "hello world!again"));
         producer.close();
+
     }
 }
