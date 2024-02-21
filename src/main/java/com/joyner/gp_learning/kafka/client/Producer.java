@@ -1,5 +1,7 @@
-package com.joyner.gp_learning.kafka_client;
+package com.joyner.gp_learning.kafka.client;
 
+import com.joyner.gp_learning.kafka.dto.Company;
+import com.joyner.gp_learning.kafka.serializer.CompanySerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -26,15 +28,18 @@ public class Producer {
         Properties props = new Properties();
         props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, CompanySerializer.class.getName());
         props.setProperty(ProducerConfig.CLIENT_ID_CONFIG, "producer.client.id.demo");
         return props;
     }
 
     public static void main(String[] args) {
         Properties props = initConfig();
-        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
-        producer.send(new ProducerRecord<>("quickstart-events", "hello world!again"));
+        KafkaProducer<String, Company> producer = new KafkaProducer<>(props);
+        Company company = new Company();
+        company.setName("test company");
+        company.setAddress("beijing");
+        producer.send(new ProducerRecord<>("quickstart-events", company));
         producer.close();
 
     }

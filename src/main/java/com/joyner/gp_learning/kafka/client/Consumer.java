@@ -1,5 +1,7 @@
-package com.joyner.gp_learning.kafka_client;
+package com.joyner.gp_learning.kafka.client;
 
+import com.joyner.gp_learning.kafka.dto.Company;
+import com.joyner.gp_learning.kafka.serializer.CompanyDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -32,18 +34,18 @@ public class Consumer {
         props.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
         props.setProperty(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
         props.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        props.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CompanyDeserializer.class.getName());
         return props;
     }
 
     public static void main(String[] args) {
 
         Properties props = initConfig();
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+        KafkaConsumer<String, Company> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("quickstart-events"));
         while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-            for (ConsumerRecord<String, String> record : records)
+            ConsumerRecords<String, Company> records = consumer.poll(Duration.ofMillis(100));
+            for (ConsumerRecord<String, Company> record : records)
                 System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
         }
     }
