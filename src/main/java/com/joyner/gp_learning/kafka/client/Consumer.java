@@ -6,11 +6,12 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.PartitionInfo;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * <pre>
@@ -42,11 +43,31 @@ public class Consumer {
 
         Properties props = initConfig();
         KafkaConsumer<String, Company> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("quickstart-events"));
+        List<PartitionInfo> partitionInfos = consumer.partitionsFor("quickstart-events");
+        List<TopicPartition> topicPartitions = new ArrayList<>();
+        for (PartitionInfo partitionInfo : partitionInfos) {
+            TopicPartition topicPartition = new TopicPartition(partitionInfo.topic(), partitionInfo.partition());
+            topicPartitions.add(topicPartition);
+        }
+
+        consumer.assign(topicPartitions);
+
+        //consumer.subscribe(Arrays.asList("quickstart-events"));
         while (true) {
             ConsumerRecords<String, Company> records = consumer.poll(Duration.ofMillis(100));
-            for (ConsumerRecord<String, Company> record : records)
+
+            Set<TopicPartition> partitions = records.partitions();
+            for (TopicPartition partition : partitions) {
+                List<ConsumerRecord<String, Company>> partitionRecords = records.records(partition);
+                for (ConsumerRecord<String, Company> record : partitionRecords) {
+                    System.out.printf("partition = %d, offset = %d, key = %s, value = %s%n", record.partition(), record.offset(), record.key(), record.value());
+                }
+            }
+
+            /*for (ConsumerRecord<String, Company> record : records) {
                 System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+            }*/
+
         }
     }
 }
