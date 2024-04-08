@@ -67,7 +67,7 @@ public class LuNioEngine {
             worker.start();
         }
         //阻塞
-        System.in.read();
+        boss.join();
     }
 
     public static void main(String[] args) throws Exception {
