@@ -1,6 +1,7 @@
 package com.joyner.gp_learning.netty_related.get_started;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -36,9 +37,11 @@ public class TimeServerClient {
                         pipeline.addLast(new TimeDecoder()).addLast(new TimeClientHandler());
                     }
                 })
-                .connect(new InetSocketAddress(9999));
+                .connect(new InetSocketAddress(9090));
 
-        connect.sync().channel().closeFuture().sync();
+        Channel channel = connect.sync().channel();
+        channel.writeAndFlush("hello server".getBytes());
+        channel.closeFuture().sync();
 
 
     }
