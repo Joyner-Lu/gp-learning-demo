@@ -11,7 +11,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <pre>
- *
+ 架构：
+
+ boss   thread ---- selector ---- register server  关注：OP_ACCEPT
+ worker thread ---- selector ---- register clients 关注：OP_READ(多个socket)
+                                     -- socket1
+                                     -- socket2
+                                     -- ....
+                                     -- socketN
+
  * </pre>
  *
  * @author 陆清云 luqy@xiaopeng.com
