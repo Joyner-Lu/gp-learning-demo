@@ -25,7 +25,6 @@ public class MyRpcDemo {
         //TODO 原因待分析：
 
         ClientFactory.initClientPool();
-
         //执行100次
         for (int i = 0; i < 100; i++) {
             new Thread(() -> {
@@ -36,7 +35,6 @@ public class MyRpcDemo {
             }).start();
         }
 
-        System.in.read();
 
 
     }

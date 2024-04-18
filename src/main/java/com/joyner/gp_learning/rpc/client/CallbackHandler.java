@@ -3,7 +3,6 @@ package com.joyner.gp_learning.rpc.client;
 import com.joyner.gp_learning.rpc.base.RpcResBody;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * <pre>
@@ -20,15 +19,11 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CallbackHandler {
 
-    private static ConcurrentHashMap<Long, CountDownLatch> latchRegistry = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<Long, ICallBackInterface> callbackRegistry = new ConcurrentHashMap<>();
     private static ConcurrentHashMap<Long, RpcResBody> responseRegistry = new ConcurrentHashMap<>();
 
-    public static void add(Long requestId, CountDownLatch latch) {
-        latchRegistry.put(requestId, latch);
-    }
-
-    public static CountDownLatch get(Long requestId) {
-        return latchRegistry.get(requestId);
+    public static void register(Long requestId, ICallBackInterface callBackInterface) {
+        callbackRegistry.put(requestId, callBackInterface);
     }
 
     public static RpcResBody getResponse(Long requestId) {
@@ -37,16 +32,16 @@ public class CallbackHandler {
         return rpcResBody;
     }
 
-    public static void remove(Long requestId) {
-        latchRegistry.remove(requestId);
+    private static void remove(Long requestId) {
+        callbackRegistry.remove(requestId);
     }
 
     //run
     public static void run(Long requestId, RpcResBody rpcResBody) {
         responseRegistry.put(requestId, rpcResBody);
-        CountDownLatch countDownLatch = latchRegistry.get(requestId);
-        if (countDownLatch != null) {
-            countDownLatch.countDown();
+        ICallBackInterface callBackInterface = callbackRegistry.get(requestId);
+        if (callBackInterface != null) {
+            callBackInterface.run(requestId, rpcResBody);
             //remove
             remove(requestId);
         }

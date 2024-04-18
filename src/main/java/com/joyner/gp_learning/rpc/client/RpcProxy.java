@@ -53,7 +53,9 @@ public class RpcProxy {
             //发送请求:1.获取连接 2.发送请求 3.发送完毕之后等待 4.RpcClientHandler处理结果
             ClientFactory.getClient(RpcConstant.SERVER_IP, RpcConstant.SERVER_PORT).writeAndFlush(request).sync();
             CountDownLatch countDownLatch = new CountDownLatch(1);
-            CallbackHandler.add(requestId, countDownLatch);
+            CallbackHandler.register(requestId, (requestId1, rpcResBody) -> {
+                countDownLatch.countDown();
+            });
             countDownLatch.await();
             RpcResBody response = CallbackHandler.getResponse(requestId);
             return response.getResult();

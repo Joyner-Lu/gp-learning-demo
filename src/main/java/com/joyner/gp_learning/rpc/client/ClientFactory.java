@@ -29,12 +29,12 @@ public class ClientFactory {
     //key: ip:port value:ClientPool,这里的ip:port是服务端的ip:port
     private static ConcurrentHashMap<String, ClientPool> clientPoolMap = new ConcurrentHashMap<>();
 
-    static {
-        //初始化
-        initClientPool();
-    }
+
 
     public static void initClientPool() {
+        if (!clientPoolMap.isEmpty()) {
+            return;
+        }
         long start = System.currentTimeMillis();
         synchronized (clientPoolMap) {
             String key = RpcConstant.SERVER_IP + ":" + RpcConstant.SERVER_PORT;
@@ -47,7 +47,7 @@ public class ClientFactory {
         }
         long end = System.currentTimeMillis();
         //打印耗时，单位是秒
-        //System.out.println("初始化连接池：" + (end - start) / 1000 + "秒");
+        System.out.println("初始化连接池：" + (end - start) / 1000 + "秒");
     }
 
 
