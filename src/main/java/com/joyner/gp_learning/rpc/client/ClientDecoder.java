@@ -58,7 +58,7 @@ public class ClientDecoder extends ByteToMessageDecoder {
         byte[] bodyBytes = new byte[(int) bodyLength];
         byteBuf.readBytes(bodyBytes);
         RpcResBody obj = RpcUtil.getObj(RpcResBody.class, bodyBytes);
-        CallbackHandler.run(requestId, obj);
+        CallbackHandlerMapping.run(requestId, obj);
         System.out.println("client receive msg, requestId:" + requestId + ",result:" + obj.getResult());
         RpcRes rpcRes = new RpcRes();
         rpcRes.setRpcHeader(rpcHeader);

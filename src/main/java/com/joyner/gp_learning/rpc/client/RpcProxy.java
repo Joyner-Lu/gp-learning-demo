@@ -1,10 +1,13 @@
 package com.joyner.gp_learning.rpc.client;
 
-import com.joyner.gp_learning.rpc.base.*;
+import com.joyner.gp_learning.rpc.base.RpcConstant;
+import com.joyner.gp_learning.rpc.base.RpcHeader;
+import com.joyner.gp_learning.rpc.base.RpcReqBody;
+import com.joyner.gp_learning.rpc.base.RpcUtil;
 import io.netty.buffer.ByteBuf;
 
 import java.lang.reflect.Proxy;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * <pre>
@@ -52,13 +55,9 @@ public class RpcProxy {
 
             //发送请求:1.获取连接 2.发送请求 3.发送完毕之后等待 4.RpcClientHandler处理结果
             ClientFactory.getClient(RpcConstant.SERVER_IP, RpcConstant.SERVER_PORT).writeAndFlush(request).sync();
-            CountDownLatch countDownLatch = new CountDownLatch(1);
-            CallbackHandler.register(requestId, (requestId1, rpcResBody) -> {
-                countDownLatch.countDown();
-            });
-            countDownLatch.await();
-            RpcResBody response = CallbackHandler.getResponse(requestId);
-            return response.getResult();
+            CompletableFuture future = new CompletableFuture();
+            CallbackHandlerMapping.register(requestId, future);
+            return future.get();
         });
     }
 }

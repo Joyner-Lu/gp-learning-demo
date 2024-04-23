@@ -28,7 +28,7 @@ public class RpcClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         RpcRes res = (RpcRes) msg;
-        CallbackHandler.run(res.getRpcHeader().getRequestId(), res.getRpcResBody());
+        CallbackHandlerMapping.run(res.getRpcHeader().getRequestId(), res.getRpcResBody());
     }
 
 }
