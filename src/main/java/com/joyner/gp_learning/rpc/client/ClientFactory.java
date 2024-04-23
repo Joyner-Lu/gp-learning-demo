@@ -98,7 +98,9 @@ public class ClientFactory {
                     .handler(new ChannelInitializer<NioSocketChannel>() {
                         @Override
                         protected void initChannel(NioSocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new RpcClientHandler());
+                            ch.pipeline().
+                                    addLast(new ClientDecoder()).
+                                    addLast(new RpcClientHandler());
                         }
                     })
                     .connect(new InetSocketAddress(ip, port))

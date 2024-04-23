@@ -26,12 +26,16 @@ public class MyRpcDemo {
 
         ClientFactory.initClientPool();
         //执行100次
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             new Thread(() -> {
                 Random random = new Random();
                 int i1 = random.nextInt(100);
                 IRpcDemo rpcDemo = RpcProxy.proxyGet(IRpcDemo.class);
-                String s = rpcDemo.sayHello("joyner" + count.getAndIncrement());
+                String name = "joyner" + count.getAndIncrement();
+                String s = rpcDemo.sayHello(name);
+                if  (!("hello " + name).equals(s)) {
+                    throw new RuntimeException("error,result:" + s + ",req:" + name);
+                }
             }).start();
         }
 

@@ -1,10 +1,6 @@
 package com.joyner.gp_learning.rpc.client;
 
-import com.joyner.gp_learning.rpc.base.RpcConstant;
-import com.joyner.gp_learning.rpc.base.RpcResBody;
-import com.joyner.gp_learning.rpc.base.RpcUtil;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
+import com.joyner.gp_learning.rpc.base.RpcRes;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -29,56 +25,10 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  */
 public class RpcClientHandler extends ChannelInboundHandlerAdapter {
 
-    private byte[] remainBytes;
-
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf byteBuf = (ByteBuf) msg;
-        if (remainBytes != null && remainBytes.length > 0) {
-            //上次读取剩余的数据包,拼接到byteBuf
-            ByteBuf newByteBuf = ByteBufAllocator.DEFAULT.buffer(remainBytes.length + byteBuf.readableBytes());
-            newByteBuf.writeBytes(remainBytes);
-            newByteBuf.writeBytes(byteBuf);
-            remainBytes = null;
-            byteBuf.clear();//记得要清理
-            byteBuf = newByteBuf;
-        }
-
-        //读取服务端的返回
-        while (byteBuf.readableBytes() >= RpcConstant.HEADER_LEN) {
-            boolean result = processRes(byteBuf);
-            if (!result) {
-                break;
-            }
-        }
-
-        //处理剩余的数据包
-        if (byteBuf.readableBytes() > 0) {
-            remainBytes = new byte[byteBuf.readableBytes()];
-            byteBuf.readBytes(remainBytes);
-        }
-
+        RpcRes res = (RpcRes) msg;
+        CallbackHandler.run(res.getRpcHeader().getRequestId(), res.getRpcResBody());
     }
 
-    private boolean processRes(ByteBuf byteBuf) {
-        //读取header
-        byteBuf.markReaderIndex();
-        //读取header
-        int type = byteBuf.readInt();
-        long requestId = byteBuf.readLong();
-        long bodyLength = byteBuf.readLong();
-
-        if (byteBuf.readableBytes() < bodyLength) {
-            //数据包不完整,恢复头部
-            byteBuf.resetReaderIndex();
-            return false;
-        }
-        //读取body
-        byte[] bodyBytes = new byte[(int) bodyLength];
-        byteBuf.readBytes(bodyBytes);
-        RpcResBody obj = RpcUtil.getObj(RpcResBody.class, bodyBytes);
-        CallbackHandler.run(requestId, obj);
-        System.out.println("client receive msg, requestId:" + requestId + ",result:" + obj.getResult());
-        return true;
-    }
 }

@@ -2,6 +2,7 @@ package com.joyner.gp_learning.rpc.base;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import lombok.Data;
 
 /**
  * <pre>
@@ -16,6 +17,7 @@ import io.netty.buffer.ByteBufAllocator;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
+@Data
 public class RpcHeader {
     //协议类型
     private int type = 0x01010101;
