@@ -1,6 +1,9 @@
-package com.joyner.gp_learning.rpc.client;
+package com.joyner.gp_learning.rpc.server;
 
-import com.joyner.gp_learning.rpc.base.*;
+import com.joyner.gp_learning.rpc.base.RpcConstant;
+import com.joyner.gp_learning.rpc.base.RpcHeader;
+import com.joyner.gp_learning.rpc.base.RpcReqBody;
+import com.joyner.gp_learning.rpc.base.RpcUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
@@ -20,48 +23,43 @@ import java.util.List;
  * 修改后版本: 修改人： 修改日期: 修改内容:
  * </pre>
  */
-public class ClientDecoder extends ByteToMessageDecoder {
-
+public class RpcServerDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-
         ByteBuf byteBuf = (ByteBuf) msg;
-        //读取服务端的返回
         while (byteBuf.readableBytes() >= RpcConstant.HEADER_LEN) {
-            RpcRes res = processRes(byteBuf);
-            if (res == null) {
+            RpcReq req = doRes(ctx, byteBuf);
+            if (req == null) {
                 break;
             }
-            //输出
-            out.add(res);
+            out.add(req);
         }
 
     }
 
-    private RpcRes processRes(ByteBuf byteBuf) {
-        //读取header
+    private RpcReq doRes(ChannelHandlerContext ctx, ByteBuf byteBuf) throws Exception {
         byteBuf.markReaderIndex();
         //读取header
         int type = byteBuf.readInt();
         long requestId = byteBuf.readLong();
         long bodyLength = byteBuf.readLong();
 
+
         if (byteBuf.readableBytes() < bodyLength) {
             //数据包不完整,恢复头部
             byteBuf.resetReaderIndex();
             return null;
         }
-        RpcHeader rpcHeader = new RpcHeader(requestId, bodyLength);
-        rpcHeader.setType(type);
-
-        //读取body
+        //处理body
         byte[] bodyBytes = new byte[(int) bodyLength];
         byteBuf.readBytes(bodyBytes);
-        RpcResBody obj = RpcUtil.getObj(RpcResBody.class, bodyBytes);
-        System.out.println("client receive msg, requestId:" + requestId + ",result:" + obj.getResult());
-        RpcRes rpcRes = new RpcRes();
-        rpcRes.setRpcHeader(rpcHeader);
-        rpcRes.setRpcResBody(obj);
-        return rpcRes;
+        RpcReqBody obj = RpcUtil.getObj(RpcReqBody.class, bodyBytes);
+        RpcReq rpcReq = new RpcReq();
+
+        RpcHeader header = new RpcHeader(requestId, bodyLength);
+        header.setType(type);
+        rpcReq.setRpcHeader(header);
+        rpcReq.setRpcReqBody(obj);
+        return rpcReq;
     }
 }

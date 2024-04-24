@@ -85,7 +85,7 @@ public class ClientFactory {
         }
         long end = System.currentTimeMillis();
         //打印耗时，单位是秒
-        System.out.println("获取连接耗时：" + (end - start) / 1000 + "秒");
+        //System.out.println("获取连接耗时：" + (end - start) / 1000 + "秒");
         return result;
     }
 

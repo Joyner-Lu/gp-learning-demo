@@ -34,7 +34,9 @@ public class MyRpcServer {
                     .childHandler(new ChannelInitializer<NioSocketChannel>() {
                         @Override
                         protected void initChannel(NioSocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new MyRpcServerHandler());
+                            ch.pipeline().
+                                    addLast(new RpcServerDecoder()).
+                                    addLast(new MyRpcServerHandler());
                         }
                     })
                     .bind(new InetSocketAddress(RpcConstant.SERVER_IP, RpcConstant.SERVER_PORT))

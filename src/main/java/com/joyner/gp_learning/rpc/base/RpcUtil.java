@@ -2,6 +2,7 @@ package com.joyner.gp_learning.rpc.base;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import io.netty.buffer.UnpooledDirectByteBuf;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -72,6 +73,7 @@ public class RpcUtil {
         ByteBuf request = ByteBufAllocator.DEFAULT.buffer(RpcConstant.HEADER_LEN + bodyByteBuf.readableBytes());
         request.writeBytes(rpcHeader.getHeaderByteBuf());
         request.writeBytes(bodyByteBuf);
+        bodyByteBuf.release();
         return request;
     }
 

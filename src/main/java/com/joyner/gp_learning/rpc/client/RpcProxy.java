@@ -5,6 +5,7 @@ import com.joyner.gp_learning.rpc.base.RpcHeader;
 import com.joyner.gp_learning.rpc.base.RpcReqBody;
 import com.joyner.gp_learning.rpc.base.RpcUtil;
 import io.netty.buffer.ByteBuf;
+import io.netty.util.ReferenceCountUtil;
 
 import java.lang.reflect.Proxy;
 import java.util.concurrent.CompletableFuture;
@@ -49,7 +50,7 @@ public class RpcProxy {
             ByteBuf byteBuf = RpcUtil.getByteBuf(rpcReqBody);
 
             long requestId = RpcUtil.getRequestId();
-            System.out.println("send requestId:" + requestId);
+            //System.out.println("send requestId:" + requestId);
             RpcHeader rpcHeader = new RpcHeader(requestId, byteBuf.readableBytes());
             ByteBuf request = RpcUtil.buildRequest(rpcHeader, rpcReqBody);
 
