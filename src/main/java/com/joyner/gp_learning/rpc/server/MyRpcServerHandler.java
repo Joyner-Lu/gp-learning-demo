@@ -5,7 +5,6 @@ import com.joyner.gp_learning.rpc.base.RpcReqBody;
 import com.joyner.gp_learning.rpc.base.RpcResBody;
 import com.joyner.gp_learning.rpc.base.RpcUtil;
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -35,27 +34,35 @@ public class MyRpcServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         RpcReq req = (RpcReq) msg;
-        //这是请求的头部
-        RpcHeader rpcHeader = req.getRpcHeader();
-        RpcReqBody rpcReqBody = req.getRpcReqBody();
+        ctx.executor().parent().execute(() -> {
+            try {
+                //这是请求的头部
+                RpcHeader rpcHeader = req.getRpcHeader();
+                RpcReqBody rpcReqBody = req.getRpcReqBody();
 
-        String serviceName = rpcReqBody.getServiceName();
-        String methodName = rpcReqBody.getMethodName();
-        Object[] params = rpcReqBody.getParams();
-        //通过反射进行调用
-        Class<?> clazz = ServerRegistry.get(serviceName);
-        Object instance = clazz.newInstance();
-        Object result = clazz.getMethod(methodName, rpcReqBody.getParameterTypes()).invoke(instance, params);
-        RpcResBody rpcResBody = new RpcResBody(result);
+                String serviceName = rpcReqBody.getServiceName();
+                String methodName = rpcReqBody.getMethodName();
+                Object[] params = rpcReqBody.getParams();
+                //通过反射进行调用
+                Class<?> clazz = ServerRegistry.get(serviceName);
+                Object instance = clazz.newInstance();
+                Object result = clazz.getMethod(methodName, rpcReqBody.getParameterTypes()).invoke(instance, params);
+                RpcResBody rpcResBody = new RpcResBody(result);
 
-        //构造header
-        ByteBuf resultBody = RpcUtil.getByteBuf(rpcResBody);
-        //构造header
-        RpcHeader rpcHeaderRes = new RpcHeader(rpcHeader.getRequestId(), resultBody.readableBytes());
+                //构造header
+                ByteBuf resultBody = RpcUtil.getByteBuf(rpcResBody);
+                //构造header
+                RpcHeader rpcHeaderRes = new RpcHeader(rpcHeader.getRequestId(), resultBody.readableBytes());
 
 
-        System.out.println("server receive msg, requestId:" + rpcHeaderRes.getRequestId() + ",serviceName:" + serviceName + ",methodName:" + methodName + ",result:" + result);
-        ByteBuf response = RpcUtil.buildResponse(rpcHeaderRes, rpcResBody);
-        ctx.writeAndFlush(response);
+                System.out.println("server receive msg, requestId:" + rpcHeaderRes.getRequestId() + ",serviceName:" + serviceName + ",methodName:" + methodName + ",result:" + result);
+                ByteBuf response = RpcUtil.buildResponse(rpcHeaderRes, rpcResBody);
+                ctx.writeAndFlush(response);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+
+        });
+
     }
 }
